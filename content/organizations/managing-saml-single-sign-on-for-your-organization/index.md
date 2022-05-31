@@ -1,19 +1,18 @@
 ---
 title: Managing SAML single sign-on for your organization
-intro: Organization administrators can manage organization members' identities and access to the organization with SAML single sign-on (SSO).
+intro: Organization owners can manage organization members' identities and access to the organization with SAML single sign-on (SSO).
 redirect_from:
-  - /articles/managing-member-identity-and-access-in-your-organization-with-saml-single-sign-on/
+  - /articles/managing-member-identity-and-access-in-your-organization-with-saml-single-sign-on
   - /articles/managing-saml-single-sign-on-for-your-organization
   - /github/setting-up-and-managing-organizations-and-teams/managing-saml-single-sign-on-for-your-organization
 versions:
-  fpt: '*'
   ghec: '*'
 topics:
   - Organizations
   - Teams
 children:
   - /about-identity-and-access-management-with-saml-single-sign-on
-  - /about-scim
+  - /about-scim-for-organizations
   - /connecting-your-identity-provider-to-your-organization
   - /configuring-saml-single-sign-on-and-scim-using-okta
   - /enabling-and-testing-saml-single-sign-on-for-your-organization
@@ -26,3 +25,4 @@ children:
 shortTitle: Manage SAML single sign-on
 ---
 
+{% data reusables.saml.ghec-only %}

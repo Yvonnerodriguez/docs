@@ -2,9 +2,9 @@
 title: Acceder a GitHub utilizando la autenticación de dos factores
 intro: 'Cuando habilitas la 2FA, se te pedirá que proporciones tu código de 2FA así como tu contraseña al momento de iniciar sesión en {% data variables.product.product_name %}.'
 redirect_from:
-  - /articles/providing-your-2fa-security-code/
-  - /articles/providing-your-2fa-authentication-code/
-  - /articles/authenticating-to-github-using-fido-u2f-via-nfc/
+  - /articles/providing-your-2fa-security-code
+  - /articles/providing-your-2fa-authentication-code
+  - /articles/authenticating-to-github-using-fido-u2f-via-nfc
   - /articles/accessing-github-using-two-factor-authentication
   - /github/authenticating-to-github/accessing-github-using-two-factor-authentication
   - /github/authenticating-to-github/securing-your-account-with-two-factor-authentication-2fa/accessing-github-using-two-factor-authentication
@@ -36,6 +36,24 @@ Si eliminas las aplicaciones móviles después de configurar la autenticación d
 ### Recibir un mensaje de texto
 
 Si configuras una autenticación de dos factores mediante mensajes de texto, {% data variables.product.product_name %} te enviará un mensaje de texto con tu código de autenticación.
+
+### Verificar con {% data variables.product.prodname_mobile %}
+
+Si instalaste e iniciaste sesión en {% data variables.product.prodname_mobile %}, podrías elegir autenticarte con {% data variables.product.prodname_mobile %} para la autenticación bifactorial.
+
+1. Inicia sesión en {% data variables.product.product_name %} con tu buscador, utilizando tu usuario y contraseña.
+2. Si agregaste una llave de seguridad a tu cuenta, primero se te pedirá insertar y utilizar una llave de seguridad. Para omitir el uso de una llave de seguridad, haz clic en **Autenticarse con {% data variables.product.prodname_mobile %}**. ![El reto de autenticación bifactorial en {% data variables.product.product_name %} con "Autenticarse con {% data variables.product.prodname_mobile %}" resaltado](/assets/images/help/2fa/2fa-select-mobile.png)
+3. {% data variables.product.product_name %} te enviará una notificación push para verificar tu intento de inicio de sesión. Abrir la notificación push o abrir la app de {% data variables.product.prodname_mobile %} mostrará un mensaje que te pide aprobar o rechazar este intento de inicio de sesión.
+  {% note %}
+
+  **Nota:**: Este mensaje podría requerir que ingreses un número de dos dígitos que se muestra dentro del buscador en el que iniciaste sesión.
+
+  {% endnote %}
+
+  ![El reto de autenticación bifactorial con {% data variables.product.prodname_mobile %} que requiere una entrada de dos dígitos](/assets/images/help/2fa/2fa-mobile-number-challenge.png)
+
+    - Cuando apruebes el intento de inicio de sesión utilizando {% data variables.product.prodname_mobile %}, tu buscador completará el inicio de sesión automáticamente.
+    - Si rechazas el intento de inicio de sesión, se prevendrá la finalización de la autenticación. Para obtener más información, consulta la sección "[Mantener tus datos y tu cuenta seguros](/authentication/keeping-your-account-and-data-secure)".
 
 {% endif %}
 

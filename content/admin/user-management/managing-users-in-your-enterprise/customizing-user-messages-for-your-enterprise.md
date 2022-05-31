@@ -2,7 +2,7 @@
 title: Customizing user messages for your enterprise
 shortTitle: Customizing user messages
 redirect_from:
-  - /enterprise/admin/user-management/creating-a-custom-sign-in-message/
+  - /enterprise/admin/user-management/creating-a-custom-sign-in-message
   - /enterprise/admin/user-management/customizing-user-messages-on-your-instance
   - /admin/user-management/customizing-user-messages-on-your-instance
   - /admin/user-management/customizing-user-messages-for-your-enterprise
@@ -77,7 +77,7 @@ Mandatory messages have a variety of uses.
 
 If you include Markdown checkboxes in the message, all checkboxes must be selected before the user can dismiss the message. For example, if you include your terms of service in the mandatory message, you can require that each user selects a checkbox to confirm the user has read the terms.
 
-Each time a user sees a mandatory message, an audit log event is created. The event includes the version of the message that the user saw. For more information see "[Audited actions](/admin/user-management/audited-actions)."
+Each time a user sees a mandatory message, an audit log event is created. The event includes the version of the message that the user saw. For more information see "[Audit log events for your enterprise](/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise)."
 
 {% note %}
 

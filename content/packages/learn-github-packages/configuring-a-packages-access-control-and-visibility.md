@@ -23,12 +23,12 @@ For more information about permissions for repository-scoped packages, packages-
 
 ## Configuring access to container images for your personal account
 
-If you have admin permissions to a container image that's owned by a user account, you can assign read, write, or admin roles to other users. For more information about these permission roles, see "[Visibility and access permissions for container images](#visibility-and-access-permissions-for-container-images)."
+If you have admin permissions to a container image that's owned by a personal account, you can assign read, write, or admin roles to other users. For more information about these permission roles, see "[Visibility and access permissions for container images](#visibility-and-access-permissions-for-container-images)."
 
 If your package is private or internal and owned by an organization, then you can only give access to other organization members or teams.
 
 {% data reusables.package_registry.package-settings-from-user-level %}
-1. On the package settings page, click **Invite teams or people** and enter the name, username, or email of the person you want to give access. Teams cannot be given access to a container image owned by a user account.
+1. On the package settings page, click **Invite teams or people** and enter the name, username, or email of the person you want to give access. Teams cannot be given access to a container image owned by a personal account.
   ![Container access invite button](/assets/images/help/package-registry/container-access-invite.png)
 1. Next to the username or team name, use the "Role" drop-down menu to select a desired permission level.
   ![Container access options](/assets/images/help/package-registry/container-access-control-options.png)
@@ -152,7 +152,7 @@ You can choose the visibility of containers that organization members can publis
 6. Under "Container creation", choose whether you want to enable the creation of public, private, or internal container images.
     - To enable organization members to create public container images, click **Public**.
     - To enable organization members to create private container images that are only visible to other organization members, click **Private**. You can further customize the visibility of private container images.
-    - **For {% data variables.product.prodname_ghe_cloud %} only:** To enable organization members to create internal container images that are only visible to other organization members, click **Internal**.
+    - To enable organization members to create internal container images that are visible to all organization members, click **Internal**. If the organization belongs to an enterprise, the container images will be visible to all enterprise members.
     ![Visibility options for container images published by organization members](/assets/images/help/package-registry/container-creation-org-settings.png)
 
 ## Configuring visibility of container images for an organization

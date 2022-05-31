@@ -2,12 +2,12 @@
 title: メンテナンスモードの有効化とスケジューリング
 intro: '標準的なメンテナンス手順のうち、{% data variables.product.product_location %} のアップグレードやバックアップの復元などは、通常の使用のためにインスタンスをオフラインにしなければならないものがあります。'
 redirect_from:
-  - /enterprise/admin/maintenance-mode/
-  - /enterprise/admin/categories/maintenance-mode/
-  - /enterprise/admin/articles/maintenance-mode/
-  - /enterprise/admin/articles/enabling-maintenance-mode/
-  - /enterprise/admin/articles/disabling-maintenance-mode/
-  - /enterprise/admin/guides/installation/maintenance-mode/
+  - /enterprise/admin/maintenance-mode
+  - /enterprise/admin/categories/maintenance-mode
+  - /enterprise/admin/articles/maintenance-mode
+  - /enterprise/admin/articles/enabling-maintenance-mode
+  - /enterprise/admin/articles/disabling-maintenance-mode
+  - /enterprise/admin/guides/installation/maintenance-mode
   - /enterprise/admin/installation/enabling-and-scheduling-maintenance-mode
   - /enterprise/admin/configuration/enabling-and-scheduling-maintenance-mode
   - /admin/configuration/enabling-and-scheduling-maintenance-mode
@@ -35,7 +35,7 @@ shortTitle: Configure maintenance mode
 
 ![スケジューリングされたメンテナンスに関するエンドユーザ向けバナー](/assets/images/enterprise/maintenance/maintenance-scheduled.png)
 
-インスタンスがメンテナンスモードに入ると、通常のHTTP及びGitアクセスはすべて拒否されます。 Git fetch、clone、pushの操作も、サイトが一時的に利用できなくなっていることを示すエラーメッセージと共に拒否されます。 GitHub Actions jobs will not be executed. サイトにブラウザーでアクセスすると、メンテナンスページが表示されます。
+インスタンスがメンテナンスモードに入ると、通常のHTTP及びGitアクセスはすべて拒否されます。 Git fetch、clone、pushの操作も、サイトが一時的に利用できなくなっていることを示すエラーメッセージと共に拒否されます。 In high availability configurations, Git replication will be paused. GitHub Actions jobs will not be executed. サイトにブラウザーでアクセスすると、メンテナンスページが表示されます。
 
 ![メンテナンスモードのスプラッシュスクリーン](/assets/images/enterprise/maintenance/maintenance-mode-maintenance-page.png)
 

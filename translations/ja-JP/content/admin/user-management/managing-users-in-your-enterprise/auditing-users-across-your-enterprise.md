@@ -2,7 +2,7 @@
 title: Enterprise にわたるユーザの監査
 intro: 'The audit log dashboard shows site administrators the actions performed by all users and organizations across your enterprise within the current month and previous six months. The audit log includes details such as who performed the action, what the action was, and when the action was performed.'
 redirect_from:
-  - /enterprise/admin/guides/user-management/auditing-users-across-an-organization/
+  - /enterprise/admin/guides/user-management/auditing-users-across-an-organization
   - /enterprise/admin/user-management/auditing-users-across-your-instance
   - /admin/user-management/auditing-users-across-your-instance
   - /admin/user-management/auditing-users-across-your-enterprise
@@ -81,7 +81,7 @@ Audit log には、Enterprise 内で行われたアクションに関する次�
 
 ### 実行されたアクションに基づく検索
 
-`action`修飾子は、特定のイベントをカテゴリ内でグループ化して検索します。 以下のカテゴリに関連するイベントの詳しい情報については「[監査済みのアクション](/admin/user-management/audited-actions)」を参照してください。
+`action`修飾子は、特定のイベントをカテゴリ内でグループ化して検索します。 For information on the events associated with these categories, see "[Audit log events for your enterprise](/admin/monitoring-activity-in-your-enterprise/reviewing-audit-logs-for-your-enterprise/audit-log-events-for-your-enterprise)".
 
 | カテゴリ名  | 説明                                           |
 | ------ | -------------------------------------------- |

@@ -1,22 +1,25 @@
 ---
 title: アイデンティティプロバイダを Organization に接続する
-intro: 'SAML シングルサインオンおよび SCIM を使うには、あなたのアイデンティティプロバイダを、あなたの {% data variables.product.product_name %} Organization に接続する必要があります。'
-product: '{% data reusables.gated-features.saml-sso %}'
+intro: 'To use SAML single sign-on and SCIM, you must connect your identity provider (IdP) to your organization on {% data variables.product.product_name %}.'
 redirect_from:
   - /articles/connecting-your-identity-provider-to-your-organization
   - /github/setting-up-and-managing-organizations-and-teams/connecting-your-identity-provider-to-your-organization
 versions:
-  fpt: '*'
   ghec: '*'
 topics:
+  - Authentication
   - Organizations
   - Teams
 shortTitle: IdPの接続
 ---
 
-When you enable SAML SSO for your {% data variables.product.product_name %} organization, you connect your identity provider (IdP) to your organization. 詳細は「[Organization での SAML シングルサインオンの有効化とテスト](/organizations/managing-saml-single-sign-on-for-your-organization/enabling-and-testing-saml-single-sign-on-for-your-organization)」を参照してください。
+## About connection of your IdP to your organization
 
-You can find the SAML and SCIM implementation details for your IdP in the IdP's documentation.
+{% data variables.product.product_name %} OrganizationでSAML SSOを有効化すると、アイデンティティプロバイダ（IdP）をOrganizationに接続することになります。 詳細は「[Organization での SAML シングルサインオンの有効化とテスト](/organizations/managing-saml-single-sign-on-for-your-organization/enabling-and-testing-saml-single-sign-on-for-your-organization)」を参照してください。
+
+{% data reusables.saml.ghec-only %}
+
+IdPのSAML及びSCIMの実装の詳細は、IdPのドキュメンテーションにあります。
 - Active Directory フェデレーションサービス (AD FS): [SAML](https://docs.microsoft.com/windows-server/identity/active-directory-federation-services)
 - Azure Active Directory (Azure AD): [SAML](https://docs.microsoft.com/azure/active-directory/active-directory-saas-github-tutorial) および [SCIM](https://docs.microsoft.com/azure/active-directory/active-directory-saas-github-provisioning-tutorial)
 - Okta: [SAML](http://saml-doc.okta.com/SAML_Docs/How-to-Configure-SAML-2.0-for-Github-com.html) および [SCIM](http://developer.okta.com/standards/SCIM/)
@@ -26,6 +29,12 @@ You can find the SAML and SCIM implementation details for your IdP in the IdP's 
 
 {% note %}
 
-**メモ:** {% data variables.product.product_name %} がサポートする SCIM アイデンティティプロバイダは Azure AD、Okta、OneLogin です。 {% data reusables.scim.enterprise-account-scim %} SCIMに関する詳しい情報については、「[SCIM について](/organizations/managing-saml-single-sign-on-for-your-organization/about-scim) 」を参照してください。
+**メモ:** {% data variables.product.product_name %} がサポートする SCIM アイデンティティプロバイダは Azure AD、Okta、OneLogin です。 For more information about SCIM, see "[About SCIM for organizations](/organizations/managing-saml-single-sign-on-for-your-organization/about-scim-for-organizations)."
+
+{% data reusables.scim.enterprise-account-scim %}
 
 {% endnote %}
+
+## SAMLのメタデータ
+
+For more information about SAML metadata for your organization, see "[SAML configuration reference](/admin/identity-and-access-management/using-saml-for-enterprise-iam/saml-configuration-reference)."

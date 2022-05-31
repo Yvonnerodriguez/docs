@@ -1,9 +1,9 @@
 ---
 title: 休眠ユーザの管理
 redirect_from:
-  - /enterprise/admin/articles/dormant-users/
-  - /enterprise/admin/articles/viewing-dormant-users/
-  - /enterprise/admin/articles/determining-whether-a-user-account-is-dormant/
+  - /enterprise/admin/articles/dormant-users
+  - /enterprise/admin/articles/viewing-dormant-users
+  - /enterprise/admin/articles/determining-whether-a-user-account-is-dormant
   - /enterprise/admin/user-management/managing-dormant-users
   - /admin/user-management/managing-dormant-users
 intro: '{% data reusables.enterprise-accounts.dormant-user-activity-threshold %}'
@@ -42,7 +42,6 @@ topics:
 
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.policies-tab %}
-{% data reusables.enterprise-accounts.settings-tab %}
 {% data reusables.enterprise-accounts.options-tab %}
 4. [Dormancy threshold] の下で、ドロップダウンメニューを使って、希望する休眠閾値をクリックします。 ![休眠の閾値のドロップダウンメニュー](/assets/images/enterprise/site-admin-settings/dormancy-threshold-menu.png)
 
@@ -51,12 +50,6 @@ topics:
 {% ifversion ghec %}
 
 {% data reusables.enterprise-accounts.dormant-user-release-phase %}
-
-{% warning %}
-
-**Note:** During the private beta, ongoing improvements to the report download feature may limit its availability.
-
-{% endwarning %}
 
 ## Downloading the dormant users report from your enterprise account
 
