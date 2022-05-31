@@ -1,15 +1,16 @@
 ---
 title: Administrar proyectos utilizando Jira
-intro: 'Puedes integrar Jura con {% data variables.product.prodname_enterprise %} para la administración de proyectos.'
+intro: 'Puedes integrar Jura con {% data variables.product.product_name %} para la administración de proyectos.'
 redirect_from:
-  - /enterprise/admin/guides/installation/project-management-using-jira/
-  - /enterprise/admin/articles/project-management-using-jira/
+  - /enterprise/admin/guides/installation/project-management-using-jira
+  - /enterprise/admin/articles/project-management-using-jira
   - /enterprise/admin/developer-workflow/managing-projects-using-jira
   - /enterprise/admin/developer-workflow/customizing-your-instance-with-integrations
   - /enterprise/admin/user-management/managing-projects-using-jira
   - /admin/user-management/managing-projects-using-jira
 versions:
   ghes: '*'
+  ghae: '*'
 type: how_to
 topics:
   - Enterprise
@@ -60,10 +61,10 @@ shortTitle: Administración de proyectos con Jira
 
 5. En el modal **Add New Account** (Agregar nueva cuenta), completa tus parámetros de {% data variables.product.prodname_enterprise %}:
     - Desde el menú desplegable de **Host**, elige **{% data variables.product.prodname_enterprise %}**.
-    - En el campo **Team or User Account** (Cuenta de equipo o usuario), escribe el nombre de tu organización {% data variables.product.prodname_enterprise %} o cuenta personal.
+    - In the **Team or User Account** field, type the name of your {% data variables.product.prodname_enterprise %} organization or user account.
     - En el campo **OAuth Key** (Clave OAuth), escribe el ID de cliente de tu aplicación de programador de {% data variables.product.prodname_enterprise %}.
     - En el campo **OAuth Secret** (OAuth secreto), escribe el secreto de cliente para tu aplicación de programador de {% data variables.product.prodname_enterprise %}.
-    - Si no quieres enlazar los repositorios nuevos que pertenecen a tu organización o cuenta personal de {% data variables.product.prodname_enterprise %}, quita la marca de selección de **Enlazar los repositorios nuevos automáticamente**.
+    - If you don't want to link new repositories owned by your {% data variables.product.prodname_enterprise %} organization or user account, deselect **Auto Link New Repositories**.
     - Si no quieres habilitar las confirmaciones inteligentes, deselecciona **Habilitar las confirmaciones inteligentes**.
     - Da clic en **Agregar**.
 6. Revisa los permisos que concedes a tu cuenta de {% data variables.product.prodname_enterprise %} y haz clic en **Authorize application** (Autorizar aplicación).

@@ -3,7 +3,7 @@ title: リポジトリのリリースを管理する
 intro: リリースを作成し、プロジェクトのイテレーションをバンドルしてユーザに配信できます。
 redirect_from:
   - /articles/creating-releases
-  - /articles/listing-and-editing-releases/
+  - /articles/listing-and-editing-releases
   - /articles/editing-and-deleting-releases
   - /articles/managing-releases-in-a-repository
   - /github/administering-a-repository/creating-releases
@@ -21,8 +21,6 @@ topics:
 shortTitle: Manage releases
 ---
 
-{% ifversion fpt or ghes > 3.0 or ghae or ghec %}
-
 ## リリース管理について
 
 You can create new releases with release notes, @mentions of contributors, and links to binary files, as well as edit or delete existing releases.
@@ -32,11 +30,8 @@ You can create new releases with release notes, @mentions of contributors, and l
 
 {% data variables.large_files.product_name_long %}（{% data variables.large_files.product_name_short %}）オブジェクトを、{% data variables.product.product_name %} がリリースごとに作成する ZIP ファイルと tarball に含めるかどうかを選択できます。 詳しい情報については、「[リポジトリのアーカイブ内の {% data variables.large_files.product_name_short %} オブジェクトを管理する](/github/administering-a-repository/managing-git-lfs-objects-in-archives-of-your-repository)」を参照してください。
 {% endif %}
-{% endif %}
 
 ## リリースの作成
-
-{% include tool-switcher %}
 
 {% webui %}
 
@@ -107,8 +102,6 @@ If you @mention any {% data variables.product.product_name %} users in the notes
 
 ## リリースの編集
 
-{% include tool-switcher %}
-
 {% webui %}
 
 {% data reusables.repositories.navigate-to-repo %}
@@ -129,8 +122,6 @@ Releases cannot currently be edited with {% data variables.product.prodname_cli 
 {% endcli %}
 
 ## リリースの削除
-
-{% include tool-switcher %}
 
 {% webui %}
 

@@ -2,7 +2,7 @@
 title: Informarle a Git acerca de tu clave de firma
 intro: 'Para firmar las confirmaciones localmente, necesitas informar a Git que hay una llave de GPG o X.509 que quieres utilizar.'
 redirect_from:
-  - /articles/telling-git-about-your-gpg-key/
+  - /articles/telling-git-about-your-gpg-key
   - /articles/telling-git-about-your-signing-key
   - /github/authenticating-to-github/telling-git-about-your-signing-key
   - /github/authenticating-to-github/managing-commit-signature-verification/telling-git-about-your-signing-key
@@ -21,7 +21,7 @@ shortTitle: Decirle tu llave de firma a Git
 
 ## Informarle a Git acerca de tu llave GPG
 
-If you're using a GPG key that matches your committer identity and your verified email address associated with your account on {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %}, then you can begin signing commits and signing tags.
+Si estás utilizando una llave GPG que empata con tu identidad de confirmante y tu dirección de correo electrónico verificada asociada con tu cuenta de {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %}, entonces puedes comenzar a firmar confirmaciones y etiquetas.
 
 {% note %}
 
@@ -45,6 +45,12 @@ Si tienes múltiples llaves GPG, le debes decir a Git cuál utilizar.
   $ if [ -r ~/.bash_profile ]; then echo 'export GPG_TTY=$(tty)' >> ~/.bash_profile; \
     else echo 'export GPG_TTY=$(tty)' >> ~/.profile; fi
   ```
+1. Opcionalmente, para que se te pida ingresar un PIN o frase de ingreso cuando estos se requieran, instala `pinentry-mac`. Pior ejemplo, utilizando [Homebrew](https://brew.sh/):
+  ```shell
+  $ brew install pinentry-mac
+  $ echo "pinentry-program $(which pinentry-mac)" >> ~/.gnupg/gpg-agent.conf
+  $ killall gpg-agent
+  ```
 
 {% data reusables.gpg.x-509-key %}
 
@@ -54,7 +60,7 @@ Si tienes múltiples llaves GPG, le debes decir a Git cuál utilizar.
 
 ## Informarle a Git acerca de tu llave GPG
 
-If you're using a GPG key that matches your committer identity and your verified email address associated with your account on {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %}, then you can begin signing commits and signing tags.
+Si estás utilizando una llave GPG que empata con tu identidad de confirmante y tu dirección de correo electrónico verificada asociada con tu cuenta de {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %}, entonces puedes comenzar a firmar confirmaciones y etiquetas.
 
 {% note %}
 
@@ -77,7 +83,7 @@ Si tienes múltiples llaves GPG, le debes decir a Git cuál utilizar.
 
 ## Informarle a Git acerca de tu llave GPG
 
-If you're using a GPG key that matches your committer identity and your verified email address associated with your account on {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %}, then you can begin signing commits and signing tags.
+Si estás utilizando una llave GPG que empata con tu identidad de confirmante y tu dirección de correo electrónico verificada asociada con tu cuenta de {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %}, entonces puedes comenzar a firmar confirmaciones y etiquetas.
 
 {% note %}
 
@@ -91,16 +97,10 @@ Si tienes múltiples llaves GPG, le debes decir a Git cuál utilizar.
 {% data reusables.gpg.list-keys-with-note %}
 {% data reusables.gpg.copy-gpg-key-id %}
 {% data reusables.gpg.paste-gpg-key-id %}
-1. Para agregar tu llave GPG a tu perfil bash, ejecuta el siguiente comando:
-  ```shell
-  $ if [ -r ~/.bash_profile ]; then echo 'export GPG_TTY=$(tty)' >> ~/.bash_profile; \
-    else echo 'export GPG_TTY=$(tty)' >> ~/.profile; fi
+1. To add your GPG key to your `.bashrc` startup file, run the following command:
+  ```bash
+  $ [ -f ~/.bashrc ] && echo 'export GPG_TTY=$(tty)' >> ~/.bashrc
   ```
-  {% note %}
-
-  **Nota:** Si no tienes `.bash_profile`, este comando agrega tu llave GPG al `.profile`.
-
-  {% endnote %}
 
 {% endlinux %}
 

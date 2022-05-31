@@ -1,12 +1,11 @@
 ---
 title: Invitar a las personas para que administren tu empresa
 intro: 'Puedes {% ifversion ghec %}invitar a que las personas se conviertan en propietarios empresariales o gerentes de facturación para {% elsif ghes %}agregar propietarios empresariales a{% endif %} tu cuenta empresarial. También puedes eliminar a los propietarios empresariales {% ifversion ghec %}o gerentes de facturación {% endif %}que ya no necesiten acceso a la cuenta empresarial.'
-product: '{% data reusables.gated-features.enterprise-accounts %}'
 permissions: 'Enterprise owners can {% ifversion ghec %}invite other people to become{% elsif ghes %}add{% endif %} additional enterprise administrators.'
 redirect_from:
   - /github/setting-up-and-managing-your-enterprise/managing-users-in-your-enterprise/inviting-people-to-manage-your-enterprise
   - /github/setting-up-and-managing-your-enterprise-account/inviting-people-to-manage-your-enterprise-account
-  - /articles/inviting-people-to-collaborate-in-your-business-account/
+  - /articles/inviting-people-to-collaborate-in-your-business-account
   - /articles/inviting-people-to-manage-your-enterprise-account
   - /github/setting-up-and-managing-your-enterprise/inviting-people-to-manage-your-enterprise
 versions:
@@ -44,11 +43,15 @@ Si tu empresa utiliza {% data variables.product.prodname_emus %}, solo se pueden
 
 ## {% ifversion ghec %}Invitar{% elsif ghes %}Agregar{% endif %} a un administrador empresarial a tu cuenta empresarial
 
-{% ifversion ghec %}Después de que invites a alguien para que se una a la cuenta empresarial, esta persona debe aceptar la invitación que le llegó por correo electrónico antes de que pueda acceder a la cuenta empresarial. Pending invitations will expire after 7 days.{% endif %}
+{% ifversion ghec %}Después de que invites a alguien para que se una a la cuenta empresarial, esta persona debe aceptar la invitación que le llegó por correo electrónico antes de que pueda acceder a la cuenta empresarial. Las invitaciones pendientes vencerán después de 7 días.{% endif %}
+
+{% if enterprise-membership-view-improvements %}
+You can see all pending invitations to become an administrator of your enterprise account. Para obtener más información, consulta la sección "[Visualizar a las personas en tu empresa](/admin/user-management/managing-users-in-your-enterprise/viewing-people-in-your-enterprise#viewing-pending-invitations)".
+{% endif %}
 
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.people-tab %}
-1. En la barra lateral izquierda, haz clic en **Administrators** (Administradores). ![Pestaña Administrators (Administradores) en la barra lateral izquierda](/assets/images/help/business-accounts/administrators-tab.png)
+{% data reusables.enterprise-accounts.administrators-tab %}
 1. Sobre la lista de administradores, haz clic en {% ifversion ghec %}**Invitar administrador**{% elsif ghes %}**Agregar propietario**{% endif %}.
   {% ifversion ghec %}
   ![botón de "invitar administrador" sobre la lista de propietarios empresariales](/assets/images/help/business-accounts/invite-admin-button.png)
@@ -64,12 +67,17 @@ Si tu empresa utiliza {% data variables.product.prodname_emus %}, solo se pueden
 
 Solo los propietarios de empresa pueden eliminar a otros administradores de empresa de la cuenta de empresa.
 
+{% ifversion ghec %}
+If the administrator you want to remove is a member of any organizations owned by the enterprise, you can choose **Convert to member**, which will remove their administrative role but retain their organization memberships, or **Remove from enterprise**, which will remove both their administrative role and organization memberships.
+{% endif %}
+
 {% data reusables.enterprise-accounts.access-enterprise %}
 {% data reusables.enterprise-accounts.people-tab %}
-1. Junto al nombre de usuario de la persona que te gustaría eliminar, haz clic en {% octicon "gear" aria-label="The Settings gear" %}, luego en **Eliminar propietario**{% ifversion ghec %} o **Eliminar gerente de facturación**{% endif %}.
+{% data reusables.enterprise-accounts.administrators-tab %}
+1. Next to the username of the person you'd like to remove, click {% octicon "gear" aria-label="The Settings gear" %}, then click {% ifversion ghes %}**Remove owner**{% elsif ghec %}**Convert to member** or **Remove from enterprise**.{% endif %}.
   {% ifversion ghec %}
   ![Parámetros con opción del menú para eliminar un administrador de empresa](/assets/images/help/business-accounts/remove-admin.png)
   {% elsif ghes %}
   ![Parámetros con opción del menú para eliminar un administrador de empresa](/assets/images/help/business-accounts/ghes-remove-owner.png)
   {% endif %}
-1. Lee la confirmación y luego haz clic en **Eliminar propietario**{% ifversion ghec %} o **Eliminar gerente de facturación**{% endif %}.
+1. Lee la confirmación y luego haz clic en {% ifversion ghes %}**Eliminar propietario**{% elsif ghec %}**Sí, convertir a USERNAME en miembro**{% endif %}.

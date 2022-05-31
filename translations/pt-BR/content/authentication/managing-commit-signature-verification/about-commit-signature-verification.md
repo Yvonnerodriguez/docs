@@ -2,8 +2,8 @@
 title: Sobre a verificação de assinatura de commit
 intro: 'Ao usar GPG ou S/MIME, você pode assinar tags e commits localmente. Essas tags ou commits estão marcadas como verificadas em {% data variables.product.product_name %} para que outras pessoas possam estar confiantes de que as alterações vêm de uma fonte de confiança.'
 redirect_from:
-  - /articles/about-gpg-commit-and-tag-signatures/
-  - /articles/about-gpg/
+  - /articles/about-gpg-commit-and-tag-signatures
+  - /articles/about-gpg
   - /articles/about-commit-signature-verification
   - /github/authenticating-to-github/about-commit-signature-verification
   - /github/authenticating-to-github/managing-commit-signature-verification/about-commit-signature-verification
@@ -72,7 +72,7 @@ Para assinar commits usando GPG e para que esses commits sejam verificados no {%
 
 Você pode usar S/MIME para assinar commits com uma chave X.509 emitida pela organização.
 
-O {% data variables.product.product_name %} usa [o pacote Debian ca-certificates](https://packages.debian.org/hu/jessie/ca-certificates), a mesma loja confiável usada pelos navegadores Mozilla, para confirmar se seus commits e tags localmente assinados são criptograficamente verificáveis em uma chave pública em um certificado raiz confiável.
+O {% data variables.product.product_name %} usa [o pacote Debian ca-certificates](https://packages.debian.org/bullseye/ca-certificates), a mesma loja confiável usada pelos navegadores Mozilla, para confirmar se seus commits e tags localmente assinados são criptograficamente verificáveis em uma chave pública em um certificado raiz confiável.
 
 {% data reusables.gpg.smime-git-version %}
 

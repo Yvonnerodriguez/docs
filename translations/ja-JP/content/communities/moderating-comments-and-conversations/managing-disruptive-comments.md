@@ -2,8 +2,8 @@
 title: 混乱を生むコメントを管理する
 intro: 'Issue、プルリクエスト、 およびコミットに対するコメントを{% ifversion fpt or ghec %}非表示、編集{% else %}編集{% endif %}、削除できます。'
 redirect_from:
-  - /articles/editing-a-comment/
-  - /articles/deleting-a-comment/
+  - /articles/editing-a-comment
+  - /articles/deleting-a-comment
   - /articles/managing-disruptive-comments
   - /github/building-a-strong-community/managing-disruptive-comments
 versions:
@@ -18,7 +18,7 @@ shortTitle: コメントの管理
 
 ## コメントを非表示にする
 
-リポジトリに対する書き込み権限があるユーザは、Issue、プルリクエスト、 およびコミットに対するコメントを非表示にすることができます。
+{% ifversion fpt or ghec %}Organization moderators, and anyone{% else %}Anyone{% endif %} with write access to a repository, can hide comments on issues, pull requests, and commits.
 
 1 つのディスカッションに集中し、プルリクエストのナビゲーションとレビューがしやすいように、トピックから外れている、古い、または解決済みのコメントは非表示にすることができます。 非表示のコメントは最小化されますが、リポジトリに対する読み取りアクセスがあるユーザは展開することができます。
 
@@ -35,7 +35,7 @@ shortTitle: コメントの管理
 
 ## コメントを再表示する
 
-リポジトリに対する書き込み権限があるユーザは、Issue、プルリクエスト、 およびコミットに対するコメントを再表示することができます。
+{% ifversion fpt or ghec %}Organization moderators, and anyone{% else %}Anyone{% endif %} with write access to a repository, can unhide comments on issues, pull requests, and commits.
 
 1. 再表示するコメントに移動します。
 2. コメントの右上隅にある [**{% octicon "fold" aria-label="The fold icon" %}Show comment**] をクリックします。 ![コメント テキストの表示](/assets/images/help/repository/hidden-comment-show.png)
@@ -82,3 +82,8 @@ Issue やプルリクエストで、会話に役立つ建設的な内容が部�
 1. 削除したいコメントに移動します。
 2. コメントの右上隅にある {% octicon "kebab-horizontal" aria-label="The horizontal kebab icon" %} をクリックしてから、[**Delete**] をクリックします。 ![編集、非表示、削除、レポートのオプションが表示されている水平の kebab アイコンとコメント モデレーション メニュー](/assets/images/help/repository/comment-menu.png)
 3. オプションで、コメントを削除したことを示すコメントとその理由を入力します。
+
+{% ifversion fpt or ghec %}
+## 参考リンク
+- "[Managing moderators in your organization](/organizations/managing-peoples-access-to-your-organization-with-roles/managing-moderators-in-your-organization)"
+{% endif %} 

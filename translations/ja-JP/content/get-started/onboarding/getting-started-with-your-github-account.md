@@ -1,6 +1,6 @@
 ---
 title: Getting started with your GitHub account
-intro: 'With a user account on {% data variables.product.prodname_dotcom %}, you can import or create repositories, collaborate with others, and connect with the {% data variables.product.prodname_dotcom %} community.'
+intro: 'With a personal account on {% data variables.product.prodname_dotcom %}, you can import or create repositories, collaborate with others, and connect with the {% data variables.product.prodname_dotcom %} community.'
 versions:
   fpt: '*'
   ghes: '*'
@@ -20,7 +20,7 @@ The first steps in starting with {% data variables.product.product_name %} are t
 The first steps in starting with {% data variables.product.product_name %} are to access your account and view your profile.
 {% endif %}
 
-{% ifversion fpt or ghec %}There are several types of accounts on {% data variables.product.prodname_dotcom %}. {% endif %} Every person who uses {% data variables.product.product_name %} has their own user account, which can be part of multiple organizations and teams. Your user account is your identity on {% data variables.product.product_location %} and represents you as an individual.
+{% ifversion fpt or ghec %}There are several types of accounts on {% data variables.product.prodname_dotcom %}. {% endif %} Every person who uses {% data variables.product.product_name %} has their own personal account, which can be part of multiple organizations and teams. Your personal account is your identity on {% data variables.product.product_location %} and represents you as an individual.
 
 {% ifversion fpt or ghec %}
 ### 1. アカウントを作成する
@@ -97,7 +97,7 @@ Any number of people can work together in repositories across {% data variables.
 ### 1. Working with repositories
 
 #### リポジトリを作成する
-リポジトリは、プロジェクトのフォルダーのようなものです。 You can have any number of public and private repositories in your user account. Repositories can contain folders and files, images, videos, spreadsheets, and data sets, as well as the revision history for all files in the repository. For more information, see "[About repositories](/github/creating-cloning-and-archiving-repositories/about-repositories)."
+リポジトリは、プロジェクトのフォルダーのようなものです。 You can have any number of public and private repositories in your personal account. Repositories can contain folders and files, images, videos, spreadsheets, and data sets, as well as the revision history for all files in the repository. For more information, see "[About repositories](/github/creating-cloning-and-archiving-repositories/about-repositories)."
 
 When you create a new repository, you should initialize the repository with a README file to let people know about your project. 詳しい情報については「[新しいリポジトリの作成](/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/creating-a-new-repository)」を参照してください。
 
@@ -112,7 +112,7 @@ If you have existing projects you'd like to move over to {% data variables.produ
 ### 3. Managing collaborators and permissions
 リポジトリの Issue、プルリクエスト、プロジェクトボードを使ってプロジェクトで他者とコラボレーションできます。 You can invite other people to your repository as collaborators from the **Collaborators** tab in the repository settings. 詳しい情報については、「[コラボレータを個人リポジトリに招待する](/github/setting-up-and-managing-your-github-user-account/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository)」を参照してください。
 
-You are the owner of any repository you create in your user account and have full control of the repository. Collaborators have write access to your repository, limiting what they have permission to do. 詳しい情報については[ユーザアカウントのリポジトリ権限レベル](/github/setting-up-and-managing-your-github-user-account/managing-user-account-settings/permission-levels-for-a-user-account-repository)を参照してください。
+You are the owner of any repository you create in your personal account and have full control of the repository. Collaborators have write access to your repository, limiting what they have permission to do. For more information, see "[Permission levels for a personal account repository](/github/setting-up-and-managing-your-github-user-account/managing-user-account-settings/permission-levels-for-a-user-account-repository)."
 
 ### 4. リポジトリ設定を管理する
 As the owner of a repository you can configure several settings, including the repository's visibility, topics, and social media preview. 詳しい情報については、「[リポジトリ設定を管理する](/github/administering-a-repository/managing-repository-settings)」を参照してください。
@@ -134,7 +134,7 @@ You can use GitHub Issues to organize your work with issues and pull requests an
 Notifications provide updates about the activity on {% data variables.product.prodname_dotcom %} you've subscribed to or participated in. 会話に関心がなくなった場合は、今後受信する通知の種類を、サブスクライブ解除、Watch 解除、またはカスタマイズできます。 詳しい情報については、「[通知について](/github/managing-subscriptions-and-notifications-on-github/setting-up-notifications/about-notifications)」を参照してください。
 
 ### 8. {% data variables.product.prodname_pages %} の活用
-You can use {% data variables.product.prodname_pages %} to create and host a website directly from a repository on {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %}. For more information, see "[About {% data variables.product.prodname_pages %}](/pages/getting-started-with-github-pages/about-github-pages)."
+You can use {% data variables.product.prodname_pages %} to create and host a website directly from a repository on {% ifversion ghae %}{% data variables.product.product_name %}{% else %}{% data variables.product.product_location %}{% endif %}. 詳しい情報については、「[{% data variables.product.prodname_pages %} について](/pages/getting-started-with-github-pages/about-github-pages)」を参照してください。
 
 {% ifversion fpt or ghec %}
 ### 9. {% data variables.product.prodname_discussions %}を使用する
@@ -182,14 +182,18 @@ For more information, see "[Securing your software supply chain](/code-security/
 ### 2. Interacting with {% data variables.product.prodname_gcf %}
 {% data reusables.support.ask-and-answer-forum %}
 
-### 3. Learning with {% data variables.product.prodname_learning %}
+### 3. Reading about {% data variables.product.product_name %} on {% data variables.product.prodname_docs %}
+
+{% data reusables.docs.you-can-read-docs-for-your-product %}
+
+### 4. Learning with {% data variables.product.prodname_learning %}
 {% data reusables.getting-started.learning-lab %}
 
 {% ifversion fpt or ghec %}
-### 4. Supporting the open source community
+### 5. Supporting the open source community
 {% data reusables.getting-started.sponsors %}
 
-### 5. {% data variables.contact.github_support %} への連絡
+### 6. {% data variables.contact.github_support %} への連絡
 {% data reusables.getting-started.contact-support %}
 
 {% ifversion fpt %}
