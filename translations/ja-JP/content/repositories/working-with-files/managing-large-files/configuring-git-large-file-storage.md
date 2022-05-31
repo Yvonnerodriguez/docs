@@ -2,7 +2,7 @@
 title: Git Large File Storage を設定する
 intro: '[{% data variables.large_files.product_name_short %} をインストール](/articles/installing-git-large-file-storage/) したら、それをリポジトリ内の大容量ファイルに関連付ける必要かあります。'
 redirect_from:
-  - /articles/configuring-large-file-storage/
+  - /articles/configuring-large-file-storage
   - /articles/configuring-git-large-file-storage
   - /github/managing-large-files/configuring-git-large-file-storage
   - /github/managing-large-files/versioning-large-files/configuring-git-large-file-storage
@@ -39,11 +39,15 @@ shortTitle: Configure Git LFS
   ```
   {% data variables.large_files.product_name_short %} に関連付けたいファイルタイプはすべて `git {% data variables.large_files.command_name %} track` で追加する必要があります。 このコマンドは、リポジトリの *.gitattributes* ファイルを修正し、大容量ファイルを {% data variables.large_files.product_name_short %} に関連付けます。
 
-  {% tip %}
+  {% note %}
 
-  **ヒント:** ローカルの *.gitattributes* ファイルをリポジトリにコミットするよう強くおすすめします。 {% data variables.large_files.product_name_short %} に関連付けられているグローバルな *.gitattributes* ファイルを利用すると、他の Git プロジェクトにコントリビュートする際にコンフリクトを起こすことがあります。
+  **Note:** We strongly suggest that you commit your local *.gitattributes* file into your repository.
 
-  {% endtip %}
+    - {% data variables.large_files.product_name_short %} に関連付けられているグローバルな *.gitattributes* ファイルを利用すると、他の Git プロジェクトにコントリビュートする際にコンフリクトを起こすことがあります。
+    - Including the *.gitattributes* file in the repository allows people creating forks or fresh clones to more easily collaborate using {% data variables.large_files.product_name_short %}.
+    - Including the *.gitattributes* file in the repository allows {% data variables.large_files.product_name_short %} objects to optionally be included in ZIP file and tarball archives.
+
+  {% endnote %}
 
 4. 以下のコマンドで、関連付けた拡張子に一致するリポジトリにファイルを追加します:
   ```shell

@@ -2,7 +2,7 @@
 title: Instalar o GitHub Enterprise Server no AWS
 intro: 'Para instalar o {% data variables.product.prodname_ghe_server %} no Amazon Web Services (AWS), você deve iniciar uma instância do Amazon Elastic Compute Cloud (EC2) e, em seguida, criar e vincular um volume de dados separado do Amazon Elastic Block Store (EBS).'
 redirect_from:
-  - /enterprise/admin/guides/installation/installing-github-enterprise-on-aws/
+  - /enterprise/admin/guides/installation/installing-github-enterprise-on-aws
   - /enterprise/admin/installation/installing-github-enterprise-server-on-aws
   - /admin/installation/installing-github-enterprise-server-on-aws
 versions:
@@ -55,10 +55,9 @@ As AMIs para o {% data variables.product.prodname_ghe_server %} estão disponív
 
 ### Usar o portal do {% data variables.product.prodname_ghe_server %} para selecionar uma AMI
 
-{% data reusables.enterprise_installation.enterprise-download-procedural %}
 {% data reusables.enterprise_installation.download-appliance %}
-3. No menu suspenso Select your platform (Selecionar plataforma), clique em **Amazon Web Services**.
-4. No menu suspenso Select your AWS region (Selecionar região do AWS), escolha a região.
+3. Em "Na nuvem de {% data variables.product.prodname_dotcom %}", selecione o menu suspenso "Selecione sua plataforma" e clique em **Amazon Web Services**.
+4. Selecione "Selecione sua região AWS" no menu suspenso e clique na região desejada.
 5. Anote a ID da AMI.
 
 ### Usar a CLI do AWS para selecionar uma AMI

@@ -2,8 +2,8 @@
 title: Identifying and authorizing users for GitHub Apps
 intro: '{% data reusables.shortdesc.identifying_and_authorizing_github_apps %}'
 redirect_from:
-  - /early-access/integrations/user-identification-authorization/
-  - /apps/building-integrations/setting-up-and-registering-github-apps/identifying-users-for-github-apps/
+  - /early-access/integrations/user-identification-authorization
+  - /apps/building-integrations/setting-up-and-registering-github-apps/identifying-users-for-github-apps
   - /apps/building-github-apps/identifying-and-authorizing-users-for-github-apps
   - /developers/apps/identifying-and-authorizing-users-for-github-apps
 versions:
@@ -25,11 +25,7 @@ When your GitHub App acts on behalf of a user, it performs user-to-server reques
 
 To authorize users for standard apps that run in the browser, use the [web application flow](#web-application-flow).
 
-{% ifversion fpt or ghae or ghes > 3.0 or ghec %}
-
 To authorize users for headless apps without direct access to the browser, such as CLI tools or Git credential managers, use the [device flow](#device-flow). The device flow uses the OAuth 2.0 [Device Authorization Grant](https://tools.ietf.org/html/rfc8628).
-
-{% endif %}
 
 ## Web application flow
 
@@ -53,7 +49,7 @@ When your GitHub App specifies a `login` parameter, it prompts users with a spec
 Name | Type | Description
 -----|------|------------
 `client_id` | `string` | **Required.** The client ID for your GitHub App. You can find this in your [GitHub App settings](https://github.com/settings/apps) when you select your app. **Note:** The app ID and client ID are not the same, and are not interchangeable.
-`redirect_uri` | `string` | The URL in your application where users will be sent after authorization. This must be an exact match to {% ifversion fpt or ghes > 3.0 or ghec %} one of the URLs you provided as a **Callback URL** {% else %} the URL you provided in the **User authorization callback URL** field{% endif %} when setting up your GitHub App and can't contain any additional parameters.
+`redirect_uri` | `string` | The URL in your application where users will be sent after authorization. This must be an exact match to {% ifversion fpt or ghes or ghec %} one of the URLs you provided as a **Callback URL** {% else %} the URL you provided in the **User authorization callback URL** field{% endif %} when setting up your GitHub App and can't contain any additional parameters.
 `state` | `string` | This should contain a random string to protect against forgery attacks and could contain any other arbitrary data.
 `login` | `string` | Suggests a specific account to use for signing in and authorizing the app.
 `allow_signup` | `string` | Whether or not unauthenticated users will be offered an option to sign up for {% data variables.product.prodname_dotcom %} during the OAuth flow. The default is `true`. Use `false` when a policy prohibits signups.
@@ -89,7 +85,7 @@ Name | Type | Description
 `client_id` | `string` | **Required.** The  client ID for your GitHub App.
 `client_secret` | `string`   | **Required.** The  client secret for your GitHub App.
 `code` | `string`   | **Required.** The code you received as a response to Step 1.
-`redirect_uri` | `string` | The URL in your application where users will be sent after authorization. This must be an exact match to {% ifversion fpt or ghes > 3.0 or ghec %} one of the URLs you provided as a **Callback URL** {% else %} the URL you provided in the **User authorization callback URL** field{% endif %} when setting up your GitHub App and can't contain any additional parameters.
+`redirect_uri` | `string` | The URL in your application where users will be sent after authorization. This must be an exact match to {% ifversion fpt or ghes or ghec %} one of the URLs you provided as a **Callback URL** {% else %} the URL you provided in the **User authorization callback URL** field{% endif %} when setting up your GitHub App and can't contain any additional parameters.
 `state` | `string` | The unguessable random string you provided in Step 1.
 
 #### Response
@@ -120,8 +116,6 @@ For example, in curl you can set the Authorization header like this:
 curl -H "Authorization: token OAUTH-TOKEN" {% data variables.product.api_url_pre %}/user
 ```
 
-{% ifversion fpt or ghae or ghes > 3.0 or ghec %}
-
 ## Device flow
 
 {% note %}
@@ -130,14 +124,11 @@ curl -H "Authorization: token OAUTH-TOKEN" {% data variables.product.api_url_pre
 
 {% endnote %}
 
-The device flow allows you to authorize users for a headless app, such as a CLI tool or Git credential manager.
+The device flow allows you to authorize users for a headless app, such as a CLI tool or Git credential manager. 
 
-For more information about authorizing users using the device flow, see "[Authorizing OAuth Apps](/developers/apps/authorizing-oauth-apps#device-flow)".
-
-{% endif %}
+{% if device-flow-is-opt-in %}Before you can use the device flow to identify and authorize users, you must first enable it in your app's settings. For more information on enabling device flow, see "[Modifying a GitHub App](/developers/apps/managing-github-apps/modifying-a-github-app)." {% endif %}For more information about authorizing users using the device flow, see "[Authorizing OAuth Apps](/developers/apps/authorizing-oauth-apps#device-flow)."
 
 ## Check which installation's resources a user can access
-
 
 Once you have an OAuth token for a user, you can check which installations that user can access.
 
@@ -157,7 +148,7 @@ If a user revokes their authorization of a GitHub App, the app will receive the 
 
 ## User-level permissions
 
-You can add user-level permissions to your GitHub App to access user resources, such as user emails, that are granted by individual users as part of the [user authorization flow](#identifying-users-on-your-site). User-level permissions differ from [repository and organization-level permissions](/rest/reference/permissions-required-for-github-apps), which are granted at the time of installation on an organization or user account.
+You can add user-level permissions to your GitHub App to access user resources, such as user emails, that are granted by individual users as part of the [user authorization flow](#identifying-users-on-your-site). User-level permissions differ from [repository and organization-level permissions](/rest/reference/permissions-required-for-github-apps), which are granted at the time of installation on an organization or personal account.
 
 You can select user-level permissions from within your GitHub App's settings in the **User permissions** section of the **Permissions & webhooks** page. For more information on selecting permissions, see "[Editing a GitHub App's permissions](/apps/managing-github-apps/editing-a-github-app-s-permissions/)."
 
@@ -239,16 +230,16 @@ While most of your API interaction should occur using your server-to-server inst
 
 #### Deployment Statuses
 
-* [List deployment statuses](/rest/reference/repos#list-deployment-statuses)
-* [Create a deployment status](/rest/reference/repos#create-a-deployment-status)
-* [Get a deployment status](/rest/reference/repos#get-a-deployment-status)
+* [List deployment statuses](/rest/reference/deployments#list-deployment-statuses)
+* [Create a deployment status](/rest/reference/deployments#create-a-deployment-status)
+* [Get a deployment status](/rest/reference/deployments#get-a-deployment-status)
 
 #### Deployments
 
-* [List deployments](/rest/reference/repos#list-deployments)
-* [Create a deployment](/rest/reference/repos#create-a-deployment)
-* [Get a deployment](/rest/reference/repos#get-a-deployment){% ifversion fpt or ghes or ghae or ghec %}
-* [Delete a deployment](/rest/reference/repos#delete-a-deployment){% endif %}
+* [List deployments](/rest/reference/deployments#list-deployments)
+* [Create a deployment](/rest/reference/deployments#create-a-deployment)
+* [Get a deployment](/rest/reference/deployments#get-a-deployment){% ifversion fpt or ghes or ghae or ghec %}
+* [Delete a deployment](/rest/reference/deployments#delete-a-deployment){% endif %}
 
 #### Events
 
@@ -271,7 +262,8 @@ While most of your API interaction should occur using your server-to-server inst
 
 #### Git Refs
 
-* [Create a reference](/rest/reference/git#create-a-reference)* [Get a reference](/rest/reference/git#get-a-reference)
+* [Create a reference](/rest/reference/git#create-a-reference)
+* [Get a reference](/rest/reference/git#get-a-reference)
 * [List matching references](/rest/reference/git#list-matching-references)
 * [Update a reference](/rest/reference/git#update-a-reference)
 * [Delete a reference](/rest/reference/git#delete-a-reference)
@@ -448,8 +440,8 @@ While most of your API interaction should occur using your server-to-server inst
 {% ifversion fpt or ghec %}
 #### Organization Team Sync
 
-* [List idp groups for a team](/rest/reference/teams#list-idp-groups-for-a-team)
-* [Create or update idp group connections](/rest/reference/teams#create-or-update-idp-group-connections)
+* [List IdP groups for a team](/rest/reference/teams#list-idp-groups-for-a-team)
+* [Create or update IdP group connections](/rest/reference/teams#create-or-update-idp-group-connections)
 * [List IdP groups for an organization](/rest/reference/teams#list-idp-groups-for-an-organization)
 {% endif %}
 
@@ -609,7 +601,7 @@ While most of your API interaction should occur using your server-to-server inst
 * [Get a repository](/rest/reference/repos#get-a-repository)
 * [Update a repository](/rest/reference/repos#update-a-repository)
 * [Delete a repository](/rest/reference/repos#delete-a-repository)
-* [Compare two commits](/rest/reference/repos#compare-two-commits)
+* [Compare two commits](/rest/reference/commits#compare-two-commits)
 * [List repository contributors](/rest/reference/repos#list-repository-contributors)
 * [List forks](/rest/reference/repos#list-forks)
 * [Create a fork](/rest/reference/repos#create-a-fork)
@@ -641,68 +633,68 @@ While most of your API interaction should occur using your server-to-server inst
 
 #### Repository Branches
 
-* [List branches](/rest/reference/repos#list-branches)
-* [Get a branch](/rest/reference/repos#get-a-branch)
-* [Get branch protection](/rest/reference/repos#get-branch-protection)
-* [Update branch protection](/rest/reference/repos#update-branch-protection)
-* [Delete branch protection](/rest/reference/repos#delete-branch-protection)
-* [Get admin branch protection](/rest/reference/repos#get-admin-branch-protection)
-* [Set admin branch protection](/rest/reference/repos#set-admin-branch-protection)
-* [Delete admin branch protection](/rest/reference/repos#delete-admin-branch-protection)
-* [Get pull request review protection](/rest/reference/repos#get-pull-request-review-protection)
-* [Update pull request review protection](/rest/reference/repos#update-pull-request-review-protection)
-* [Delete pull request review protection](/rest/reference/repos#delete-pull-request-review-protection)
-* [Get commit signature protection](/rest/reference/repos#get-commit-signature-protection)
-* [Create commit signature protection](/rest/reference/repos#create-commit-signature-protection)
-* [Delete commit signature protection](/rest/reference/repos#delete-commit-signature-protection)
-* [Get status checks protection](/rest/reference/repos#get-status-checks-protection)
-* [Update status check protection](/rest/reference/repos#update-status-check-protection)
-* [Remove status check protection](/rest/reference/repos#remove-status-check-protection)
-* [Get all status check contexts](/rest/reference/repos#get-all-status-check-contexts)
-* [Add status check contexts](/rest/reference/repos#add-status-check-contexts)
-* [Set status check contexts](/rest/reference/repos#set-status-check-contexts)
-* [Remove status check contexts](/rest/reference/repos#remove-status-check-contexts)
-* [Get access restrictions](/rest/reference/repos#get-access-restrictions)
-* [Delete access restrictions](/rest/reference/repos#delete-access-restrictions)
+* [List branches](/rest/reference/branches#list-branches)
+* [Get a branch](/rest/reference/branches#get-a-branch)
+* [Get branch protection](/rest/reference/branches#get-branch-protection)
+* [Update branch protection](/rest/reference/branches#update-branch-protection)
+* [Delete branch protection](/rest/reference/branches#delete-branch-protection)
+* [Get admin branch protection](/rest/reference/branches#get-admin-branch-protection)
+* [Set admin branch protection](/rest/reference/branches#set-admin-branch-protection)
+* [Delete admin branch protection](/rest/reference/branches#delete-admin-branch-protection)
+* [Get pull request review protection](/rest/reference/branches#get-pull-request-review-protection)
+* [Update pull request review protection](/rest/reference/branches#update-pull-request-review-protection)
+* [Delete pull request review protection](/rest/reference/branches#delete-pull-request-review-protection)
+* [Get commit signature protection](/rest/reference/branches#get-commit-signature-protection)
+* [Create commit signature protection](/rest/reference/branches#create-commit-signature-protection)
+* [Delete commit signature protection](/rest/reference/branches#delete-commit-signature-protection)
+* [Get status checks protection](/rest/reference/branches#get-status-checks-protection)
+* [Update status check protection](/rest/reference/branches#update-status-check-protection)
+* [Remove status check protection](/rest/reference/branches#remove-status-check-protection)
+* [Get all status check contexts](/rest/reference/branches#get-all-status-check-contexts)
+* [Add status check contexts](/rest/reference/branches#add-status-check-contexts)
+* [Set status check contexts](/rest/reference/branches#set-status-check-contexts)
+* [Remove status check contexts](/rest/reference/branches#remove-status-check-contexts)
+* [Get access restrictions](/rest/reference/branches#get-access-restrictions)
+* [Delete access restrictions](/rest/reference/branches#delete-access-restrictions)
 * [List teams with access to the protected branch](/rest/reference/repos#list-teams-with-access-to-the-protected-branch)
-* [Add team access restrictions](/rest/reference/repos#add-team-access-restrictions)
-* [Set team access restrictions](/rest/reference/repos#set-team-access-restrictions)
-* [Remove team access restriction](/rest/reference/repos#remove-team-access-restrictions)
+* [Add team access restrictions](/rest/reference/branches#add-team-access-restrictions)
+* [Set team access restrictions](/rest/reference/branches#set-team-access-restrictions)
+* [Remove team access restriction](/rest/reference/branches#remove-team-access-restrictions)
 * [List user restrictions of protected branch](/rest/reference/repos#list-users-with-access-to-the-protected-branch)
-* [Add user access restrictions](/rest/reference/repos#add-user-access-restrictions)
-* [Set user access restrictions](/rest/reference/repos#set-user-access-restrictions)
-* [Remove user access restrictions](/rest/reference/repos#remove-user-access-restrictions)
-* [Merge a branch](/rest/reference/repos#merge-a-branch)
+* [Add user access restrictions](/rest/reference/branches#add-user-access-restrictions)
+* [Set user access restrictions](/rest/reference/branches#set-user-access-restrictions)
+* [Remove user access restrictions](/rest/reference/branches#remove-user-access-restrictions)
+* [Merge a branch](/rest/reference/branches#merge-a-branch)
 
 #### Repository Collaborators
 
-* [List repository collaborators](/rest/reference/repos#list-repository-collaborators)
-* [Check if a user is a repository collaborator](/rest/reference/repos#check-if-a-user-is-a-repository-collaborator)
-* [Add a repository collaborator](/rest/reference/repos#add-a-repository-collaborator)
-* [Remove a repository collaborator](/rest/reference/repos#remove-a-repository-collaborator)
-* [Get repository permissions for a user](/rest/reference/repos#get-repository-permissions-for-a-user)
+* [List repository collaborators](/rest/reference/collaborators#list-repository-collaborators)
+* [Check if a user is a repository collaborator](/rest/reference/collaborators#check-if-a-user-is-a-repository-collaborator)
+* [Add a repository collaborator](/rest/reference/collaborators#add-a-repository-collaborator)
+* [Remove a repository collaborator](/rest/reference/collaborators#remove-a-repository-collaborator)
+* [Get repository permissions for a user](/rest/reference/collaborators#get-repository-permissions-for-a-user)
 
 #### Repository Commit Comments
 
-* [List commit comments for a repository](/rest/reference/repos#list-commit-comments-for-a-repository)
-* [Get a commit comment](/rest/reference/repos#get-a-commit-comment)
-* [Update a commit comment](/rest/reference/repos#update-a-commit-comment)
-* [Delete a commit comment](/rest/reference/repos#delete-a-commit-comment)
-* [List commit comments](/rest/reference/repos#list-commit-comments)
-* [Create a commit comment](/rest/reference/repos#create-a-commit-comment)
+* [List commit comments for a repository](/rest/reference/commits#list-commit-comments-for-a-repository)
+* [Get a commit comment](/rest/reference/commits#get-a-commit-comment)
+* [Update a commit comment](/rest/reference/commits#update-a-commit-comment)
+* [Delete a commit comment](/rest/reference/commits#delete-a-commit-comment)
+* [List commit comments](/rest/reference/commits#list-commit-comments)
+* [Create a commit comment](/rest/reference/commits#create-a-commit-comment)
 
 #### Repository Commits
 
-* [List commits](/rest/reference/repos#list-commits)
-* [Get a commit](/rest/reference/repos#get-a-commit)
-* [List branches for head commit](/rest/reference/repos#list-branches-for-head-commit)
+* [List commits](/rest/reference/commits#list-commits)
+* [Get a commit](/rest/reference/commits#get-a-commit)
+* [List branches for head commit](/rest/reference/commits#list-branches-for-head-commit)
 * [List pull requests associated with commit](/rest/reference/repos#list-pull-requests-associated-with-commit)
 
 #### Repository Community
 
 * [Get the code of conduct for a repository](/rest/reference/codes-of-conduct#get-the-code-of-conduct-for-a-repository)
 {% ifversion fpt or ghec %}
-* [Get community profile metrics](/rest/reference/repos#get-community-profile-metrics)
+* [Get community profile metrics](/rest/reference/repository-metrics#get-community-profile-metrics)
 {% endif %}
 
 #### Repository Contents
@@ -722,40 +714,40 @@ While most of your API interaction should occur using your server-to-server inst
 
 #### Repository Hooks
 
-* [List repository webhooks](/rest/reference/repos#list-repository-webhooks)
-* [Create a repository webhook](/rest/reference/repos#create-a-repository-webhook)
-* [Get a repository webhook](/rest/reference/repos#get-a-repository-webhook)
-* [Update a repository webhook](/rest/reference/repos#update-a-repository-webhook)
-* [Delete a repository webhook](/rest/reference/repos#delete-a-repository-webhook)
-* [Ping a repository webhook](/rest/reference/repos#ping-a-repository-webhook)
+* [List repository webhooks](/rest/reference/webhooks#list-repository-webhooks)
+* [Create a repository webhook](/rest/reference/webhooks#create-a-repository-webhook)
+* [Get a repository webhook](/rest/reference/webhooks#get-a-repository-webhook)
+* [Update a repository webhook](/rest/reference/webhooks#update-a-repository-webhook)
+* [Delete a repository webhook](/rest/reference/webhooks#delete-a-repository-webhook)
+* [Ping a repository webhook](/rest/reference/webhooks#ping-a-repository-webhook)
 * [Test the push repository webhook](/rest/reference/repos#test-the-push-repository-webhook)
 
 #### Repository Invitations
 
-* [List repository invitations](/rest/reference/repos#list-repository-invitations)
-* [Update a repository invitation](/rest/reference/repos#update-a-repository-invitation)
-* [Delete a repository invitation](/rest/reference/repos#delete-a-repository-invitation)
-* [List repository invitations for the authenticated user](/rest/reference/repos#list-repository-invitations-for-the-authenticated-user)
-* [Accept a repository invitation](/rest/reference/repos#accept-a-repository-invitation)
-* [Decline a repository invitation](/rest/reference/repos#decline-a-repository-invitation)
+* [List repository invitations](/rest/reference/collaborators#list-repository-invitations)
+* [Update a repository invitation](/rest/reference/collaborators#update-a-repository-invitation)
+* [Delete a repository invitation](/rest/reference/collaborators#delete-a-repository-invitation)
+* [List repository invitations for the authenticated user](/rest/reference/collaborators#list-repository-invitations-for-the-authenticated-user)
+* [Accept a repository invitation](/rest/reference/collaborators#accept-a-repository-invitation)
+* [Decline a repository invitation](/rest/reference/collaborators#decline-a-repository-invitation)
 
 #### Repository Keys
 
-* [List deploy keys](/rest/reference/repos#list-deploy-keys)
-* [Create a deploy key](/rest/reference/repos#create-a-deploy-key)
-* [Get a deploy key](/rest/reference/repos#get-a-deploy-key)
-* [Delete a deploy key](/rest/reference/repos#delete-a-deploy-key)
+* [List deploy keys](/rest/reference/deployments#list-deploy-keys)
+* [Create a deploy key](/rest/reference/deployments#create-a-deploy-key)
+* [Get a deploy key](/rest/reference/deployments#get-a-deploy-key)
+* [Delete a deploy key](/rest/reference/deployments#delete-a-deploy-key)
 
 #### Repository Pages
 
-* [Get a GitHub Pages site](/rest/reference/repos#get-a-github-pages-site)
-* [Create a GitHub Pages site](/rest/reference/repos#create-a-github-pages-site)
-* [Update information about a GitHub Pages site](/rest/reference/repos#update-information-about-a-github-pages-site)
-* [Delete a GitHub Pages site](/rest/reference/repos#delete-a-github-pages-site)
-* [List GitHub Pages builds](/rest/reference/repos#list-github-pages-builds)
-* [Request a GitHub Pages build](/rest/reference/repos#request-a-github-pages-build)
-* [Get GitHub Pages build](/rest/reference/repos#get-github-pages-build)
-* [Get latest pages build](/rest/reference/repos#get-latest-pages-build)
+* [Get a GitHub Pages site](/rest/reference/pages#get-a-github-pages-site)
+* [Create a GitHub Pages site](/rest/reference/pages#create-a-github-pages-site)
+* [Update information about a GitHub Pages site](/rest/reference/pages#update-information-about-a-github-pages-site)
+* [Delete a GitHub Pages site](/rest/reference/pages#delete-a-github-pages-site)
+* [List GitHub Pages builds](/rest/reference/pages#list-github-pages-builds)
+* [Request a GitHub Pages build](/rest/reference/pages#request-a-github-pages-build)
+* [Get GitHub Pages build](/rest/reference/pages#get-github-pages-build)
+* [Get latest pages build](/rest/reference/pages#get-latest-pages-build)
 
 {% ifversion ghes %}
 #### Repository Pre Receive Hooks
@@ -782,11 +774,11 @@ While most of your API interaction should occur using your server-to-server inst
 
 #### Repository Stats
 
-* [Get the weekly commit activity](/rest/reference/repos#get-the-weekly-commit-activity)
-* [Get the last year of commit activity](/rest/reference/repos#get-the-last-year-of-commit-activity)
-* [Get all contributor commit activity](/rest/reference/repos#get-all-contributor-commit-activity)
-* [Get the weekly commit count](/rest/reference/repos#get-the-weekly-commit-count)
-* [Get the hourly commit count for each day](/rest/reference/repos#get-the-hourly-commit-count-for-each-day)
+* [Get the weekly commit activity](/rest/reference/repository-metrics#get-the-weekly-commit-activity)
+* [Get the last year of commit activity](/rest/reference/repository-metrics#get-the-last-year-of-commit-activity)
+* [Get all contributor commit activity](/rest/reference/repository-metrics#get-all-contributor-commit-activity)
+* [Get the weekly commit count](/rest/reference/repository-metrics#get-the-weekly-commit-count)
+* [Get the hourly commit count for each day](/rest/reference/repository-metrics#get-the-hourly-commit-count-for-each-day)
 
 {% ifversion fpt or ghec %}
 #### Repository Vulnerability Alerts
@@ -812,9 +804,9 @@ While most of your API interaction should occur using your server-to-server inst
 
 #### Statuses
 
-* [Get the combined status for a specific reference](/rest/reference/repos#get-the-combined-status-for-a-specific-reference)
-* [List commit statuses for a reference](/rest/reference/repos#list-commit-statuses-for-a-reference)
-* [Create a commit status](/rest/reference/repos#create-a-commit-status)
+* [Get the combined status for a specific reference](/rest/reference/commits#get-the-combined-status-for-a-specific-reference)
+* [List commit statuses for a reference](/rest/reference/commits#list-commit-statuses-for-a-reference)
+* [Create a commit status](/rest/reference/commits#create-a-commit-status)
 
 #### Team Discussions
 
@@ -837,10 +829,10 @@ While most of your API interaction should occur using your server-to-server inst
 {% ifversion fpt or ghec %}
 #### Traffic
 
-* [Get repository clones](/rest/reference/repos#get-repository-clones)
-* [Get top referral paths](/rest/reference/repos#get-top-referral-paths)
-* [Get top referral sources](/rest/reference/repos#get-top-referral-sources)
-* [Get page views](/rest/reference/repos#get-page-views)
+* [Get repository clones](/rest/reference/repository-metrics#get-repository-clones)
+* [Get top referral paths](/rest/reference/repository-metrics#get-top-referral-paths)
+* [Get top referral sources](/rest/reference/repository-metrics#get-top-referral-sources)
+* [Get page views](/rest/reference/repository-metrics#get-page-views)
 {% endif %}
 
 {% ifversion fpt or ghec %}

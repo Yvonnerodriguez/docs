@@ -2,8 +2,8 @@
 title: About READMEs
 intro: 'You can add a README file to your repository to tell other people why your project is useful, what they can do with your project, and how they can use it.'
 redirect_from:
-  - /articles/section-links-on-readmes-and-blob-pages/
-  - /articles/relative-links-in-readmes/
+  - /articles/section-links-on-readmes-and-blob-pages
+  - /articles/relative-links-in-readmes
   - /articles/about-readmes
   - /github/creating-cloning-and-archiving-repositories/about-readmes
   - /github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-readmes
@@ -28,7 +28,9 @@ A README is often the first item a visitor will see when visiting your repositor
 - Where users can get help with your project
 - Who maintains and contributes to the project
 
-If you put your README file in your repository's root, `docs`, or hidden `.github` directory, {% data variables.product.product_name %} will recognize and automatically surface your README to repository visitors.
+If you put your README file in your repository's hidden `.github`, root, or `docs` directory, {% data variables.product.product_name %} will recognize and automatically surface your README to repository visitors.
+
+If a repository contains more than one README file, then the file shown is chosen from locations in the following order: the `.github` directory, then the repository's root directory, and finally the `docs` directory.
 
 ![Main page of the github/scientist repository and its README file](/assets/images/help/repository/repo-with-readme.png)
 

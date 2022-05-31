@@ -2,7 +2,7 @@
 title: Configuring Git Large File Storage
 intro: 'Once [{% data variables.large_files.product_name_short %} is installed](/articles/installing-git-large-file-storage/), you need to associate it with a large file in your repository.'
 redirect_from:
-  - /articles/configuring-large-file-storage/
+  - /articles/configuring-large-file-storage
   - /articles/configuring-git-large-file-storage
   - /github/managing-large-files/configuring-git-large-file-storage
   - /github/managing-large-files/versioning-large-files/configuring-git-large-file-storage
@@ -38,11 +38,15 @@ If there are existing files in your repository that you'd like to use {% data va
   ```
   Every file type you want to associate with {% data variables.large_files.product_name_short %} will need to be added with `git {% data variables.large_files.command_name %} track`. This command amends your repository's *.gitattributes* file and associates large files with {% data variables.large_files.product_name_short %}.
 
-  {% tip %}
+  {% note %}
 
-  **Tip:** We strongly suggest that you commit your local *.gitattributes* file into your repository. Relying on a global *.gitattributes* file associated with {% data variables.large_files.product_name_short %} may cause conflicts when contributing to other Git projects.
+  **Note:** We strongly suggest that you commit your local *.gitattributes* file into your repository.
 
-  {% endtip %}
+    - Relying on a global *.gitattributes* file associated with {% data variables.large_files.product_name_short %} may cause conflicts when contributing to other Git projects.
+    - Including the *.gitattributes* file in the repository allows people creating forks or fresh clones to more easily collaborate using {% data variables.large_files.product_name_short %}.
+    - Including the *.gitattributes* file in the repository allows {% data variables.large_files.product_name_short %} objects to optionally be included in ZIP file and tarball archives.
+
+  {% endnote %}
 
 4. Add a file to the repository matching the extension you've associated:
   ```shell
