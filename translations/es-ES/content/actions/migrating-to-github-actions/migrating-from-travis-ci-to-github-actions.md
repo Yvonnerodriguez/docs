@@ -2,7 +2,6 @@
 title: Migrarse de Travis CI a GitHub Actions
 intro: '{% data variables.product.prodname_actions %} y Travis CI comparte muchas similitudes, lo cual hace que el migrarse a {% data variables.product.prodname_actions %} sea relativamente fácil.'
 redirect_from:
-  - /actions/migrating-to-github-actions/migrating-from-travis-ci-to-github-actions
   - /actions/learn-github-actions/migrating-from-travis-ci-to-github-actions
 versions:
   fpt: '*'
@@ -20,7 +19,6 @@ shortTitle: Migrarse desde Travis CI
 
 {% data reusables.actions.enterprise-beta %}
 {% data reusables.actions.enterprise-github-hosted-runners %}
-{% data reusables.actions.ae-beta %}
 
 ## Introducción
 
@@ -103,7 +101,7 @@ jobs:
 
 ### Apuntar a ramas específicas
 
-Tanto Travis CI como {% data variables.product.prodname_actions %} te permiten apuntar tu IC a una rama específica. Para obtener más información, consultala sección "[Sintaxis de flujo de trabajo para GitHub Actions](/actions/reference/workflow-syntax-for-github-actions#onpushpull_requestbranchestags)".
+Tanto Travis CI como {% data variables.product.prodname_actions %} te permiten apuntar tu IC a una rama específica. Para obtener más información, consultala sección "[Sintaxis de flujo de trabajo para GitHub Actions](/actions/reference/workflow-syntax-for-github-actions#onpushbranchestagsbranches-ignoretags-ignore)".
 
 Puedes encontrar un ejemplo de la sintaxis para cada sistema:
 
@@ -166,13 +164,13 @@ git:
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
-{% raw %}
+
 ```yaml
-- uses: actions/checkout@v2
+- uses: {% data reusables.actions.action-checkout %}
   with:
     submodules: false
 ```
-{% endraw %}
+
 </td>
 </tr>
 </table>
@@ -181,7 +179,7 @@ git:
 
 Tanto {% data variables.product.prodname_actions %} como Travis CI pueden agregar variables de ambiente personalizadas a una matriz de pruebas, lo cual te permite referirte a la variable en un paso subsecuente.
 
-En {% data variables.product.prodname_actions %}, puedes utilizar la clave `include` para agregar variables de ambiente personalizadas a una matriz. {% data reusables.github-actions.matrix-variable-example %}
+En {% data variables.product.prodname_actions %}, puedes utilizar la clave `include` para agregar variables de ambiente personalizadas a una matriz. {% data reusables.actions.matrix-variable-example %}
 
 ## Características clave en {% data variables.product.prodname_actions %}
 
@@ -189,7 +187,7 @@ Cuando te migres de Travis CI, consider las siguientes características clave en
 
 ### Almacenar secretos
 
-{% data variables.product.prodname_actions %} te permite almacenar secretos y referenciarlos en tus jobs. Las organizaciones de {% data variables.product.prodname_actions %} pueden limitar qué repositorios pueden acceder a sus secretos. {% ifversion fpt or ghes > 3.0 or ghae or ghec %}Las reglas de protección de ambiente pueden requerir aprobación manual para que un flujo de trabajo acceda a los secretos del ambiente. {% endif %}Para obtener más información, consulta la sección "[Secretos cifrados](/actions/reference/encrypted-secrets)".
+{% data variables.product.prodname_actions %} te permite almacenar secretos y referenciarlos en tus jobs. Las organizaciones de {% data variables.product.prodname_actions %} pueden limitar qué repositorios pueden acceder a sus secretos. Las reglas de protección de ambiente pueden requerir aprobación manual para que un flujo de trabajo acceda a los secretos del ambiente. Para obtener más información, consulta "[Secretos cifrados](/actions/reference/encrypted-secrets)".
 
 ### Compartir archivos entre jobs y flujos de trabajo
 
@@ -199,9 +197,13 @@ Cuando te migres de Travis CI, consider las siguientes características clave en
 
 Si tus jobs requieren de hardware o software específico, {% data variables.product.prodname_actions %} te permite almacenar tus propios ejecutores y enviar tus jobs para que éstos los procesen. {% data variables.product.prodname_actions %} también te permite utilizar políticas para controlar cómo se accede a estos ejecutores, otorgando acceso a nivel de organización o de repositorio. Para obtener más información, consulta la sección "[Hospedar tus propios ejecutores](/actions/hosting-your-own-runners)".
 
+{% ifversion fpt or ghec %}
+
 ### Tiempo de ejecución y jobs simultáneos
 
 Los jobs simultáneos y los tiempos de ejecución de los flujos de trabajo en {% data variables.product.prodname_actions %} pueden variad dependiendo de tu plan de {% data variables.product.company_short %}. Para obtener más información, consulta la sección "[Límites de uso y administración](/actions/reference/usage-limits-billing-and-administration)".
+
+{% endif %}
 
 ### Utilizar lenguajes diferentes en {% data variables.product.prodname_actions %}
 
@@ -281,19 +283,19 @@ script:
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
-{% raw %}
+
 ```yaml
 jobs:
   run_python:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v2
+      - uses: {% data reusables.actions.action-setup-python %}
         with:
           python-version: '3.7'
           architecture: 'x64'
       - run: python script.py
 ```
-{% endraw %}
+
 </td>
 </tr>
 </table>
@@ -321,16 +323,16 @@ cache: npm
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
-{% raw %}
+
 ```yaml
 - name: Cache node modules
-  uses: actions/cache@v2
+  uses: {% data reusables.actions.action-cache %}
   with:
     path: ~/.npm
-    key: v1-npm-deps-${{ hashFiles('**/package-lock.json') }}
+    key: {% raw %}v1-npm-deps-${{ hashFiles('**/package-lock.json') }}{% endraw %}
     restore-keys: v1-npm-deps-
 ```
-{% endraw %}
+
 </td>
 </tr>
 </table>
@@ -400,7 +402,7 @@ script:
 {% endraw %}
 </td>
 <td>
-{% raw %}
+
 ```yaml
 name: Node.js CI
 on: [push]
@@ -408,16 +410,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: {% data reusables.actions.action-checkout %}
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: {% data reusables.actions.action-setup-node %}
         with:
           node-version: '12.x'
       - run: npm install
       - run: npm run build
       - run: npm test
 ```
-{% endraw %}
+
 </td>
 </tr>
 </table>

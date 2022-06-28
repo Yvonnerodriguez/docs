@@ -3,8 +3,8 @@ title: 将拉取请求链接到议题
 intro: 您可以将拉取请求链接到议题，以显示修复正在进行中，并在拉取请求被合并时自动关闭该议题。
 redirect_from:
   - /github/managing-your-work-on-github/managing-your-work-with-issues-and-pull-requests/linking-a-pull-request-to-an-issue
-  - /articles/closing-issues-via-commit-message/
-  - /articles/closing-issues-via-commit-messages/
+  - /articles/closing-issues-via-commit-message
+  - /articles/closing-issues-via-commit-messages
   - /articles/closing-issues-using-keywords
   - /github/managing-your-work-on-github/closing-issues-using-keywords
   - /github/managing-your-work-on-github/linking-a-pull-request-to-an-issue
@@ -47,7 +47,7 @@ shortTitle: 将 PR 链接到议题
 * resolves
 * resolved
 
-If you use a keyword to reference a pull request comment in another pull request, the pull requests will be linked. Merging the referencing pull request will also close the referenced pull request.
+如果使用关键字在另一个拉取请求中引用拉取请求注释，则将链接拉取请求。 合并引用拉取请求也会关闭引用的拉取请求。
 
 关闭关键词的语法取决于议题是否与拉取请求在同一仓库中。
 
@@ -72,7 +72,11 @@ If you use a keyword to reference a pull request comment in another pull request
 {% data reusables.repositories.navigate-to-repo %}
 {% data reusables.repositories.sidebar-pr %}
 3. 在拉取请求列表中，单击要链接到议题的拉取请求。
+{% ifversion fpt or ghec or ghes > 3.4 or ghae-issue-6234 %}
+4. 在右侧边栏的“Development（开发）”部分，单击 {% octicon "gear" aria-label="The Gear icon" %}。
+{% else %}
 4. 在右侧边栏中，单击 **Linked issues（链接的议题）**。 ![右侧边栏中链接的议题](/assets/images/help/pull_requests/linked-issues.png)
+{% endif %}
 5. 单击要链接到拉取请求的议题。 ![下拉以链接议题](/assets/images/help/pull_requests/link-issue-drop-down.png)
 {% endif %}
 
