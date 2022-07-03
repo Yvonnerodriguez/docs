@@ -2,7 +2,7 @@
 title: Getting started with the REST API
 intro: 'Learn the foundations for using the REST API, starting with authentication and some endpoint examples.'
 redirect_from:
-  - /guides/getting-started/
+  - /guides/getting-started
   - /v3/guides/getting-started
 versions:
   fpt: '*'
@@ -148,7 +148,7 @@ When authenticating, you should see your rate limit bumped to 5,000 requests an 
 
 You can easily [create a **personal access token**][personal token] using your [Personal access tokens settings page][tokens settings]:
 
-{% ifversion fpt or ghes > 3.1 or ghae-issue-4374 or ghec %}
+{% ifversion fpt or ghes > 3.1 or ghae or ghec %}
 {% warning %}
 
 To help keep your information secure, we highly recommend setting an expiration for your personal access tokens.
@@ -164,7 +164,7 @@ To help keep your information secure, we highly recommend setting an expiration 
 ![Personal Token selection](/assets/images/help/personal_token_ghae.png)
 {% endif %}
 
-{% ifversion fpt or ghes > 3.1 or ghae-issue-4374 or ghec %}
+{% ifversion fpt or ghes > 3.1 or ghae or ghec %}
 API requests using an expiring personal access token will return that token's expiration date via the `GitHub-Authentication-Token-Expiration` header. You can use the header in your scripts to provide a warning message when the token is close to its expiration date.
 {% endif %}
 
@@ -275,11 +275,11 @@ we need to `POST` some JSON containing the details and configuration options.
 
 ```shell
 $ curl -i -H "Authorization: token {% ifversion fpt or ghes > 3.1 or ghae or ghec %}ghp_16C7e42F292c6912E7710c838347Ae178B4a{% else %}5199831f4dd3b79e7c5b7e0ebe75d67aa66e79d4{% endif %}" \
-    -d '{ \
-        "name": "blog", \
-        "auto_init": true, \
-        "private": true, \
-        "gitignore_template": "nanoc" \
+    -d '{
+        "name": "blog",
+        "auto_init": true,
+        "private": true,
+        "gitignore_template": "nanoc"
       }' \
     {% data variables.product.api_url_pre %}/user/repos
 ```
@@ -450,7 +450,7 @@ $    {% data variables.product.api_url_pre %}/users/defunkt
 The `304` status indicates that the resource hasn't changed since the last time
 we asked for it and the response will contain no body. As a bonus, `304` responses don't count against your [rate limit][rate-limiting].
 
-Woot! Now you know the basics of the {% ifversion fpt or ghec %}{% data variables.product.prodname_dotcom %}{% else %}{% data variables.product.product_name %}{% endif %} API!
+Now you know the basics of the {% ifversion fpt or ghec %}{% data variables.product.prodname_dotcom %}{% else %}{% data variables.product.product_name %}{% endif %} API!
 
 * Basic & OAuth authentication
 * Fetching and creating repositories and issues
@@ -472,7 +472,7 @@ Keep learning with the next API guide [Basics of Authentication][auth guide]!
 [issues-api]: /rest/reference/issues
 [link-header]: https://www.w3.org/wiki/LinkHeader
 [conditional-requests]: /rest#conditional-requests
-[rate-limiting]: /rest#rate-limiting
+[rate-limiting]: /rest/overview/resources-in-the-rest-api#rate-limit-http-headers
 [users api]: /rest/reference/users#get-a-user
 [auth user api]: /rest/reference/users#get-the-authenticated-user
 [defunkt github]: https://github.com/defunkt

@@ -4,7 +4,7 @@ intro: 'Você pode discutir projetos e alterações específicas, bem como ideia
 miniTocMaxHeadingLevel: 3
 redirect_from:
   - /github/collaborating-with-issues-and-pull-requests/getting-started/quickstart-for-communicating-on-github
-  - /articles/about-discussions-in-issues-and-pull-requests/
+  - /articles/about-discussions-in-issues-and-pull-requests
   - /github/collaborating-with-issues-and-pull-requests/about-conversations-on-github
   - /github/collaborating-with-issues-and-pull-requests/quickstart-for-communicating-on-github
   - /github/getting-started-with-github/quickstart/communicating-on-github
@@ -117,7 +117,6 @@ Este exemplo mostra a postagem de boas-vindas de {% data variables.product.prodn
 Este mantenedor da comunidade iniciou uma discussão para dar as boas-vindas à comunidade e pedir aos integrantes que se apresentem. Esta postagem promove uma atmosfera de acolhedora para visitantes e contribuidores. A postagem também esclarece que a equipe tem o prazer em ajudar com as contribuições para o repositório.
 
 {% endif %}
-{% ifversion fpt or ghes or ghae or ghec %}
 ### Cenários para discussões em equipe
 
 - Tenho uma pergunta que não é necessariamente relacionada a arquivos específicos no repositório.
@@ -139,8 +138,6 @@ O integrante da equipe do `octocat` publicou uma discussão sobre a equipe, info
 - Um integrante da equipe denominado Mona iniciou eventos remotos de jogos.
 - Há uma postagem no blogue que descreve como as equipes usam {% data variables.product.prodname_actions %} para produzir sua documentação.
 - Material sobre a "All Hands" de Abril agora está disponível para ver todos os integrantes da equipe.
-
-{% endif %}
 
 ## Próximas etapas
 

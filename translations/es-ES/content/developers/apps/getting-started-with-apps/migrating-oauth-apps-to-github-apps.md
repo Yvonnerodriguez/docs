@@ -53,7 +53,7 @@ Te recomendamos revisar la lista de terminales de la API que necesitas tan pront
 
 ### Diseñar con apego a los límites de tasa de la API
 
-Las GitHub Apps utilizan [reglas móviles para los límites de tasa](/apps/building-github-apps/understanding-rate-limits-for-github-apps/), las cuales pueden incrementar con base en la cantidad de repositorios y usuarios de la organización. Una GitHub App también puede hacer uso de [solicitudes condicionales](/rest/overview/resources-in-the-rest-api#conditional-requests) o de solicitudes consolidadas si utiliza la [API de GraphQL V4]({% ifversion ghec %}/free-pro-team@latest{% endif %}/graphql).
+Las GitHub Apps utilizan [reglas móviles para los límites de tasa](/apps/building-github-apps/understanding-rate-limits-for-github-apps/), las cuales pueden incrementar con base en la cantidad de repositorios y usuarios de la organización. Una GitHub App también puede utilizar [solicitudes condicionales](/rest/overview/resources-in-the-rest-api#conditional-requests) o consolidar solicitudes utilizando la [API de GraphQL]({% ifversion ghec %}/free-pro-team@latest{% endif %}/graphql).
 
 ### Registrar una GitHub App nueva
 
@@ -99,7 +99,7 @@ Necesitarás reemplazar a `YOUR_APP_NAME` con el nombre de tu GitHub App, a `ID_
 
 ### Eliminar cualquier gancho innecesario en los repositorios
 
-Una vez que ti GitHub App se haya instalado en un repositorio, deberías eliminar cualquier webhook innecesario que haya creado tu App tradicional de OAuth. Si ambas apps están instaladas en un repositorio, puede que se duplique la funcionalidad para el usuario. Para eliminar los webhooks, puedes escuchar al [webhook de `installation_repositories`](/webhooks/event-payloads/#installation_repositories) con la acción `repositories_added` y al [webhook para borrar un repositorio](/rest/reference/repos#delete-a-repository-webhook) en los repositorios que creó tu App de OAuth.
+Una vez que ti GitHub App se haya instalado en un repositorio, deberías eliminar cualquier webhook innecesario que haya creado tu App tradicional de OAuth. Si ambas apps están instaladas en un repositorio, puede que se duplique la funcionalidad para el usuario. Para eliminar los webhooks, puedes escuchar al [webhook de `installation_repositories`](/webhooks/event-payloads/#installation_repositories) con la acción `repositories_added` y al [webhook para borrar un repositorio](/rest/reference/webhooks#delete-a-repository-webhook) en los repositorios que creó tu App de OAuth.
 
 ### Animar a los usuarios a que revoquen el acceso a tu App de OAuth
 

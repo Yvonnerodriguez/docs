@@ -2,8 +2,8 @@
 title: Utilitários de linha de comando
 intro: 'O {% data variables.product.prodname_ghe_server %} tem uma série de utilitários que ajudam a resolver problemas específicos ou a executar determinadas tarefas.'
 redirect_from:
-  - /enterprise/admin/articles/viewing-all-services/
-  - /enterprise/admin/articles/command-line-utilities/
+  - /enterprise/admin/articles/viewing-all-services
+  - /enterprise/admin/articles/command-line-utilities
   - /enterprise/admin/installation/command-line-utilities
   - /enterprise/admin/configuration/command-line-utilities
   - /admin/configuration/command-line-utilities
@@ -16,7 +16,7 @@ topics:
   - SSH
 ---
 
-Depois de entrar como usuário administrador com SSH, você pode executar esses comandos de qualquer lugar na VM. Para obter mais informações, consulte "[Acessar o shell administrativo (SSH)](/enterprise/{{ currentVersion }}/admin/guides/installation/accessing-the-administrative-shell-ssh/)".
+Depois de entrar como usuário administrador com SSH, você pode executar esses comandos de qualquer lugar na VM. Para obter mais informações, consulte "[Acessando o shell administrativo (SSH)](/enterprise/admin/guides/installation/accessing-the-administrative-shell-ssh/)".
 
 ## Geral
 
@@ -115,7 +115,7 @@ Permite encontrar o identificador universalmente exclusivo (UUID) do seu nó em 
 ```
 
 {% ifversion ghes %}
-Permite isentar uma lista de usuários do limite de taxa de da API. Para obter mais informações, consulte "[Recursos na API REST](/rest/overview/resources-in-the-rest-api#rate-limiting)".
+Permite isentar uma lista de usuários do limite de taxa da API REST. Um limite rígido de 120.000 solicitações ainda será aplicado a esses usuários. Para obter mais informações, consulte "[Recursos na API REST](/rest/overview/resources-in-the-rest-api#rate-limiting)".
 
 ``` shell
 $ ghe-config app.github.rate-limiting-exempt-users "<em>hubot</em> <em>github-actions</em>"
@@ -125,7 +125,7 @@ $ ghe-config app.github.rate-limiting-exempt-users "<em>hubot</em> <em>github-ac
 
 ### ghe-config-apply
 
-Este utilitário aplica configurações do {% data variables.enterprise.management_console %}, recarrega os serviços do sistema, prepara um dispositivo de armazenamento, recarrega os serviços de aplicativos e executa as migrações pendentes de banco de dados. Ele equivale a clicar em **Save settings** (Salvar configurações) na IU da web do {% data variables.enterprise.management_console %} ou a enviar uma solicitação POST [ao endpoint `/setup/api/configure`](/enterprise/{{ currentVersion }}/user/rest/reference/enterprise-admin#management-console).
+Este utilitário aplica configurações do {% data variables.enterprise.management_console %}, recarrega os serviços do sistema, prepara um dispositivo de armazenamento, recarrega os serviços de aplicativos e executa as migrações pendentes de banco de dados. Ele equivale a clicar em **Save settings** (Salvar configurações) na IU da web do {% data variables.enterprise.management_console %} ou a enviar uma solicitação POST [ao ponto de extremidade `/setup/api/configure`](/enterprise/user/rest/reference/enterprise-admin#management-console).
 
 É provável que você não precise executar essa ação manualmente, mas é possível fazer isso caso você queira automatizar o processo de salvar suas configurações via SSH.
 
@@ -210,7 +210,7 @@ ghe-logs-tail
 
 ### ghe-maintenance
 
-Este utilitário permite controlar o estado do modo de manutenção da instalação. Ele foi desenvolvido para uso principalmente nos bastidores do {% data variables.enterprise.management_console %}, mas também pode ser usado diretamente.
+Este utilitário permite controlar o estado do modo de manutenção da instalação. Ele foi desenvolvido para uso principalmente nos bastidores do {% data variables.enterprise.management_console %}, mas também pode ser usado diretamente. Para obter mais informações, consulte "[Habilitar e programar o modo de manutenção](/admin/guides/installation/enabling-and-scheduling-maintenance-mode)".
 
 ```shell
 ghe-maintenance -h
@@ -353,7 +353,7 @@ stop/waiting
 
 ### ghe-set-password
 
-Com `ghe-set-password`, você pode definir uma nova senha para autenticação no [{% data variables.enterprise.management_console %}](/enterprise/{{ currentVersion }}/admin/guides/installation/accessing-the-management-console).
+Com `ghe-set-password`, você pode definir uma nova senha para autenticação no [{% data variables.enterprise.management_console %}](/enterprise/admin/guides/installation/accessing-the-management-console).
 
 ```shell
 ghe-set-password <new_password>
@@ -395,7 +395,7 @@ chaves atuais em /etc/ssh/ssh_host_* para gerar chaves novas. [y/N]
 
 ### ghe-ssh-weak-fingerprints
 
-Este utilitário retorna um relatório de chaves SSH fracas conhecidas armazenadas no appliance do {% data variables.product.prodname_enterprise %}. Você também pode revogar as chaves do usuário como uma ação em lote. O utilitário relatará as chaves de sistema fracas, que você deve revogar manualmente no [{% data variables.enterprise.management_console %}](/enterprise/{{ currentVersion }}/admin/guides/installation/accessing-the-management-console).
+Este utilitário retorna um relatório de chaves SSH fracas conhecidas armazenadas no appliance do {% data variables.product.prodname_enterprise %}. Você também pode revogar as chaves do usuário como uma ação em lote. O utilitário relatará as chaves de sistema fracas, que você deve revogar manualmente no [{% data variables.enterprise.management_console %}](/enterprise/admin/guides/installation/accessing-the-management-console).
 
 ```shell
 # Imprimir um relatório de chaves SSH fracas do usuário e do sistema
@@ -407,7 +407,7 @@ $ ghe-ssh-weak-fingerprints --revoke
 
 ### ghe-ssl-acme
 
-Este utilitário permite instalar um certificado Let's Encrypt no seu appliance do {% data variables.product.prodname_enterprise %}. Para obter mais informações, consulte "[Configurar o TLS](/enterprise/{{ currentVersion }}/admin/guides/installation/configuring-tls)".
+Este utilitário permite instalar um certificado Let's Encrypt no seu appliance do {% data variables.product.prodname_enterprise %}. Para obter mais informações, consulte "[Configurar o TLS](/enterprise/admin/guides/installation/configuring-tls)".
 
 Você pode usar o sinalizador `-x` para remover a configuração ACME.
 
@@ -419,7 +419,7 @@ ghe-ssl-acme -e
 
 Este utilitário permite instalar um certificado CA personalizado de raiz no seu appliance do {% data variables.product.prodname_enterprise %}. O certificado deve estar no formato PEM. Além disso, se o seu provedor de certificados incluir vários certificados CA em um só arquivo, você deverá separá-los em arquivos a serem passados individualmente para ` ghe-ssl-ca-certificate-install`.
 
-Execute este utilitário para adicionar uma cadeia de certificados para verificação de assinatura de commits S/MIME. Para obter mais informações, consulte "[Sobre a verificação de assinatura de commit](/enterprise/{{ currentVersion }}/user/articles/about-commit-signature-verification/)".
+Execute este utilitário para adicionar uma cadeia de certificados para verificação de assinatura de commits S/MIME. Para obter mais informações, consulte "[Sobre a verificação de assinatura de commit](/enterprise/user/articles/about-commit-signature-verification/)".
 
 Execute este utilitário quando a {% data variables.product.product_location %} não conseguir se conectar a outro servidor por ele estar usando um certificado SSL autoassinado ou um certificado SSL para o qual não há o pacote CA necessário. Uma forma de confirmar essa questão é executar `openssl s_client -connect host:port -verify 0 -CApath /etc/ssl/certs` na {% data variables.product.product_location %}. Se o certificado SSL do servidor remoto puder ser verificado, sua `SSL-Session` deverá ter um código de retorno 0, conforme mostrado abaixo.
 
@@ -459,9 +459,19 @@ SSL-Session:
 ghe-ssl-ca-certificate-install -c <em>/path/to/certificate</em>
 ```
 
+### ghe-ssl-certificate-setup
+
+Este utilitário permite atualizar um certificado SSL para {% data variables.product.product_location %}.
+
+Para saber mais sobre este comando ou consultar opções adicionais, use o sinalizador `-h`.
+
+```shell
+ghe-ssl-certificate-setup
+```
+
 ### ghe-ssl-generate-csr
 
-Com este utilitário, você pode gerar uma chave privada e uma solicitação de assinatura de certificado (CSR, Certificate Signing Request) a ser compartilhada com uma autoridade certificada comercial ou privada para obter um certificado válido na sua instância. Para obter mais informações, consulte "[Configurar o TLS](/enterprise/{{ currentVersion }}/admin/guides/installation/configuring-tls)".
+Com este utilitário, você pode gerar uma chave privada e uma solicitação de assinatura de certificado (CSR, Certificate Signing Request) a ser compartilhada com uma autoridade certificada comercial ou privada para obter um certificado válido na sua instância. Para obter mais informações, consulte "[Configurar o TLS](/enterprise/admin/guides/installation/configuring-tls)".
 
 Para saber mais sobre este comando ou consultar opções adicionais, use o sinalizador `-h`.
 
@@ -479,7 +489,7 @@ $ ghe-storage-extend
 
 ### ghe-version
 
-Este utilitário imprime a versão, a plataforma e a compilação da {% data variables.product.product_location %}.
+Este utilitário imprime a versão, a plataforma e a compilação de {% data variables.product.product_location %}.
 
 ```shell
 $ ghe-version
@@ -660,12 +670,44 @@ ghe-repo <em>username</em>/<em>reponame</em>
 
 ### ghe-repo-gc
 
-Este utilitário empacota manualmente uma rede de repositórios para otimizar o armazenamento do pacote. Se você tem um repositório muito grande, esse comando pode ajudar a reduzir o tamanho. O {% data variables.product.prodname_enterprise %} executa automaticamente este comando durante toda a sua interação com uma rede de repositórios.
+Este utilitário reempacota manualmente uma rede de repositórios para otimizar o armazenamento do pacote. Se você tem um repositório muito grande, esse comando pode ajudar a reduzir o tamanho. O {% data variables.product.prodname_enterprise %} executa automaticamente este comando durante toda a sua interação com uma rede de repositórios.
 
 Você pode adicionar o argumento opcional `--prune` para remover objetos inacessíveis do Git que não são referenciados em um branch, tag ou qualquer outra referência. Fazer isso é útil principalmente para remover de imediato [informações confidenciais já eliminadas](/enterprise/user/articles/remove-sensitive-data/).
 
+{% warning %}
+
+**Aviso**: Antes de usar o argumento `--prune` para remover objetos Git inacessíveis, coloque {% data variables.product.product_location %} em modo de manutenção, ou certifique-se de que o repositório esteja off-line. Para obter mais informações, consulte "[Habilitar e programar o modo de manutenção](/admin/configuration/configuring-your-enterprise/enabling-and-scheduling-maintenance-mode)".
+
+{% endwarning %}
+
 ```shell
 ghe-repo-gc <em>username</em>/<em>reponame</em>
+```
+
+## {% data variables.product.prodname_actions %}
+
+### ghe-actions-check
+
+Este utilitário verifica se todos os serviços para {% data variables.product.prodname_actions %} são saudáveis. Para obter mais informações, consulte "[Primeiros passos com {% data variables.product.prodname_actions %} para {% data variables.product.product_name %}](/admin/github-actions/getting-started-with-github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-server)" e "[Solução de problemas {% data variables.product.prodname_actions %} para a sua empresa](/admin/github-actions/advanced-configuration-and-troubleshooting/troubleshooting-github-actions-for-your-enterprise)".
+
+```shell
+ghe-actions-check
+```
+
+### ghe-actions-precheck
+
+Este utilitário testa a configuração de armazenamento do blob para {% data variables.product.prodname_actions %} em {% data variables.product.product_location %}. Você pode usar o utilitário para verificar sua configuração de armazenamento antes de habilitar o {% data variables.product.prodname_actions %} para sua instância.
+
+Para obter mais informações sobre a configuração de {% data variables.product.prodname_actions %}, consulte "[Primeiros passos com {% data variables.product.prodname_actions %} por {% data variables.product.product_name %}](/admin/github-actions/getting-started-with-github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-server)".
+
+```shell
+ghe-actions-precheck -p [<em>provider</em>] -cs ["<em>connectionstring</em>"]
+```
+
+Se o sistema de armazenamento estiver configurado corretamente, você verá a seguinte saída.
+
+```
+Todos os testes de armazenamento aprovados
 ```
 
 ## Importação e exportação
@@ -674,7 +716,7 @@ ghe-repo-gc <em>username</em>/<em>reponame</em>
 
 O `ghe-migrator` é uma ferramenta de alta fidelidade que ajuda a fazer migrações de uma instância do GitHub para outra. Você pode consolidar suas instâncias ou mover a organização, os usuários, as equipes e os repositórios do GitHub.com para o {% data variables.product.prodname_enterprise %}.
 
-Para obter mais informações, consulte nosso guia sobre [como migrar dados de usuário, organização e repositório](/enterprise/admin/guides/migrations/).
+Para obter mais informações, consulte nossos guias sobre [migração de dados para a sua empresa](/enterprise/admin/user-management/migrating-data-to-and-from-your-enterprise/).
 
 ### git-import-detect
 
@@ -685,28 +727,28 @@ git-import-detect
 
 ### git-import-hg-raw
 
-Este utilitário importa um repositório Mercurial para este repositório Git. Para obter mais informações, consulte [Importar dados de sistemas de controle de versões de terceiros](/enterprise/{}/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)."
+Este utilitário importa um repositório Mercurial para este repositório Git. Para obter mais informações, consulte "[Importando dados de sistemas de controle de versões de terceiros](/enterprise/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)".
 ```shell
 git-import-hg-raw
 ```
 
 ### git-import-svn-raw
 
-Este utilitário importa histórico do Subversion e dados de arquivos para um branch do Git. Trata-se de uma cópia direta da árvore, ignorando qualquer distinção de trunk ou branch. Para obter mais informações, consulte [Importar dados de sistemas de controle de versões de terceiros](/enterprise/{}/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)."
+Este utilitário importa histórico do Subversion e dados de arquivos para um branch do Git. Trata-se de uma cópia direta da árvore, ignorando qualquer distinção de trunk ou branch. Para obter mais informações, consulte "[Importando dados de sistemas de controle de versões de terceiros](/enterprise/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)".
 ```shell
 git-import-svn-raw
 ```
 
 ### git-import-tfs-raw
 
-Este utilitário faz a importação a partir do Controle de Versão da Fundação da Equipe (TFVC). Para obter mais informações, consulte [Importar dados de sistemas de controle de versões de terceiros](/enterprise/{}/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)."
+Este utilitário faz a importação a partir do Controle de Versão da Fundação da Equipe (TFVC). Para obter mais informações, consulte "[Importando dados de sistemas de controle de versões de terceiros](/enterprise/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)".
 ```shell
 git-import-tfs-raw
 ```
 
 ### git-import-rewrite
 
-Este utilitário reescreve o repositório importado. Isso dá a você a oportunidade de renomear autores e, para o Subversion e TFVC, produz branches Git baseados em pastas. Para obter mais informações, consulte [Importar dados de sistemas de controle de versões de terceiros](/enterprise/{}/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)."
+Este utilitário reescreve o repositório importado. Isso dá a você a oportunidade de renomear autores e, para o Subversion e TFVC, produz branches Git baseados em pastas. Para obter mais informações, consulte "[Importando dados de sistemas de controle de versões de terceiros](/enterprise/admin/guides/migrations/importing-data-from-third-party-version-control-systems/)".
 ```shell
 git-import-rewrite
 ```
@@ -771,7 +813,7 @@ Neste exemplo, `ghe-repl-status -vv` envia informações detalhadas do status de
 
 ### ghe-upgrade
 
-Este utilitário instala ou verifica um pacote de atualização. Também é possível usá-lo para voltar a uma versão de patch em casos de falha ou interrupção de uma atualização. Para obter mais informações, consulte "[Atualizar o {% data variables.product.prodname_ghe_server %}](/enterprise/{{ currentVersion }}/admin/guides/installation/upgrading-github-enterprise-server/)".
+Este utilitário instala ou verifica um pacote de atualização. Também é possível usá-lo para voltar a uma versão de patch em casos de falha ou interrupção de uma atualização. Para obter mais informações, consulte "[Atualizar o {% data variables.product.prodname_ghe_server %}](/enterprise/admin/guides/installation/upgrading-github-enterprise-server/)".
 
 Para verificar um pacote de atualização:
 ```shell
@@ -831,13 +873,13 @@ ghe-license-usage
 
 ### ghe-org-membership-update
 
-Este utilitário aplicará a configuração padrão de visibilidade da associação da organização a todos os integrantes da sua instância. Para obter mais informações, consulte "[Configurar a visibilidade da associação à organização](/enterprise/{{ currentVersion }}/admin/guides/user-management/configuring-visibility-for-organization-membership)". As opções de configuração são `públicas` ou `privadas`.
+Este utilitário aplicará a configuração padrão de visibilidade da associação da organização a todos os integrantes da sua instância. Para obter mais informações, consulte "[Configurando a visibilidade da associação à organização](/enterprise/admin/guides/user-management/configuring-visibility-for-organization-membership)". As opções de configuração são `públicas` ou `privadas`.
 
 ```shell
 ghe-org-membership-update --visibility=<em>SETTING</em>
 ```
 
-### ghe-user-csv
+### `ghe-user-csv`
 
 Este utilitário exporta uma lista de todos os usuários na instalação em formato CSV. O arquivo CSV inclui o endereço de e-mail, o tipo de usuário (por exemplo, administrador), a quantidade de repositórios, chaves SSH e associações os usuários têm na organização, o endereço IP mais recente e outras informações. Use o sinalizador `-h` para ver mais opções.
 

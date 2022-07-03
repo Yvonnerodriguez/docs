@@ -2,10 +2,10 @@
 title: GitHub Pages サイトを作成する
 intro: '新規または既存のリポジトリ内に、{% data variables.product.prodname_pages %} サイトを作成できます。'
 redirect_from:
-  - /articles/creating-pages-manually/
-  - /articles/creating-project-pages-manually/
-  - /articles/creating-project-pages-from-the-command-line/
-  - /articles/creating-project-pages-using-the-command-line/
+  - /articles/creating-pages-manually
+  - /articles/creating-project-pages-manually
+  - /articles/creating-project-pages-from-the-command-line
+  - /articles/creating-project-pages-using-the-command-line
   - /articles/creating-a-github-pages-site
   - /github/working-with-github-pages/creating-a-github-pages-site
 product: '{% data reusables.gated-features.pages %}'
@@ -27,6 +27,7 @@ shortTitle: GitHub Pagesのサイトの作成
 
 {% data reusables.repositories.create_new %}
 {% data reusables.repositories.owner-drop-down %}
+{% indented_data_reference reusables.pages.emu-org-only spaces=3 %}
 {% data reusables.pages.create-repo-name %}
 {% data reusables.repositories.choose-repo-visibility %}
 {% data reusables.repositories.initialize-with-readme %}
@@ -45,14 +46,15 @@ shortTitle: GitHub Pagesのサイトの作成
 
   {% tip %}
 
-  **Tip:** If `index.html` is present, this will be used instead of `index.md`. If neither `index.html` nor `index.md` are present, `README.md` will be used.
+  **参考:** `index.html`があるなら、`index.md`の代わりに利用されます。 `index.html`も`index.md`もないなら、`README.md`が使われます。
 
   {% endtip %}
 {% data reusables.pages.configure-publishing-source %}
 {% data reusables.repositories.sidebar-settings %}
-{% data reusables.pages.sidebar-pages %}{% ifversion fpt or ghec %}
-{% data reusables.pages.choose-visibility %}{% endif %}
+{% data reusables.pages.sidebar-pages %}
+{% data reusables.pages.choose-visibility %}
 {% data reusables.pages.visit-site %}
+{% data reusables.pages.check-workflow-run %}
 
 {% data reusables.pages.admin-must-push %}
 

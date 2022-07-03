@@ -4,7 +4,7 @@ intro: 'You can discuss specific projects and changes, as well as broader ideas 
 miniTocMaxHeadingLevel: 3
 redirect_from:
   - /github/collaborating-with-issues-and-pull-requests/getting-started/quickstart-for-communicating-on-github
-  - /articles/about-discussions-in-issues-and-pull-requests/
+  - /articles/about-discussions-in-issues-and-pull-requests
   - /github/collaborating-with-issues-and-pull-requests/about-conversations-on-github
   - /github/collaborating-with-issues-and-pull-requests/quickstart-for-communicating-on-github
   - /github/getting-started-with-github/quickstart/communicating-on-github
@@ -66,7 +66,7 @@ You can create and participate in issues, pull requests and team discussions, de
 - I want to share feedback about a specific feature.
 - I want to ask a question about files in the repository.
 
-#### Issue example
+#### Issueの例
 
 This example illustrates how a {% data variables.product.prodname_dotcom %} user created an issue in our documentation open source repository to make us aware of a bug, and discuss a fix.
 
@@ -117,7 +117,6 @@ This example shows the {% data variables.product.prodname_discussions %} welcome
 This community maintainer started a discussion to welcome the community, and to ask members to introduce themselves. This post fosters an inviting atmosphere for visitors and contributors. The post also clarifies that the team's happy to help with contributions to the repository.
 
 {% endif %}
-{% ifversion fpt or ghes or ghae or ghec %}
 ### Scenarios for team discussions
 
 - I have a question that's not necessarily related to specific files in the repository.
@@ -139,8 +138,6 @@ The `octocat` team member posted a team discussion, informing the team of variou
 - A team member called Mona started remote game events.
 - There is a blog post describing how the teams use {% data variables.product.prodname_actions %} to produce their docs.
 - Material about the April All Hands is now available for all team members to view.
-
-{% endif %}
 
 ## 次のステップ
 

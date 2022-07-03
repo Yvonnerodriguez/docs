@@ -53,7 +53,7 @@ Recomendamos que você reveja a lista de pontos finais de API de que você preci
 
 ### Projete para permanecer dentro dos limites de taxa da API
 
-Os aplicativos GitHub usam [regras móveis para limites de taxa](/apps/building-github-apps/understanding-rate-limits-for-github-apps/), que podem aumentar com base no número de repositórios e usuários da organização. Um aplicativo do GitHub também pode usar [solicitações condicionais](/rest/overview/resources-in-the-rest-api#conditional-requests) ou consolidar solicitações usando [GraphQL API V4]({% ifversion ghec %}/free-pro-team@latest{% endif %}/graphql).
+Os aplicativos GitHub usam [regras móveis para limites de taxa](/apps/building-github-apps/understanding-rate-limits-for-github-apps/), que podem aumentar com base no número de repositórios e usuários da organização. Um aplicativo do GitHub também pode usar [solicitações condicionais](/rest/overview/resources-in-the-rest-api#conditional-requests) ou consolidar solicitações usando a [API do GraphQL]({% ifversion ghec %}/free-pro-team@latest{% endif %}/graphql).
 
 ### Cadastre um novo aplicativo GitHub
 
@@ -99,7 +99,7 @@ Você deverá substituir `YOUR_APP_NAME` pelo nome do seu aplicativo GitHub, `ID
 
 ### Remova quaisquer hooks de repositório desnecessários
 
-Uma vez que seu aplicativo GitHub foi instalado em um repositório, você deve remover quaisquer webhooks desnecessários criados pelo seu aplicativo de legado OAuth. Se ambos os aplicativos estiverem instalados em um repositório, eles poderão duplicar a funcionalidade do usuário. Para remover os webhooks, Você pode ouvir [`installation_repositories` webhook](/webhooks/event-payloads/#installation_repositories) com a ação `repositórios_added` e [Excluir um webhook do repositório](/rest/reference/repos#delete-a-repository-webhook) naqueles repositórios criados pelo seu aplicativo OAuth.
+Uma vez que seu aplicativo GitHub foi instalado em um repositório, você deve remover quaisquer webhooks desnecessários criados pelo seu aplicativo de legado OAuth. Se ambos os aplicativos estiverem instalados em um repositório, eles poderão duplicar a funcionalidade do usuário. Para remover os webhooks, Você pode ouvir [`installation_repositories` webhook](/webhooks/event-payloads/#installation_repositories) com a ação `repositórios_added` e [Excluir um webhook do repositório](/rest/reference/webhooks#delete-a-repository-webhook) naqueles repositórios criados pelo seu aplicativo OAuth.
 
 ### Incentive os usuários a revogar o acesso ao seu aplicativo OAuth
 

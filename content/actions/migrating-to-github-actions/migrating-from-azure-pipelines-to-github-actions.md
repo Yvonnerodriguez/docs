@@ -2,7 +2,6 @@
 title: Migrating from Azure Pipelines to GitHub Actions
 intro: '{% data variables.product.prodname_actions %} and Azure Pipelines share several configuration similarities, which makes migrating to {% data variables.product.prodname_actions %} relatively straightforward.'
 redirect_from:
-  - /actions/migrating-to-github-actions/migrating-from-azure-pipelines-to-github-actions
   - /actions/learn-github-actions/migrating-from-azure-pipelines-to-github-actions
 versions:
   fpt: '*'
@@ -316,19 +315,19 @@ jobs:
 {% endraw %}
 </td>
 <td class="d-table-cell v-align-top">
-{% raw %}
+
 ```yaml
 jobs:
   run_python:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v2
+      - uses: {% data reusables.actions.action-setup-python %}
         with:
           python-version: '3.7'
           architecture: 'x64'
       - run: python script.py
 ```
-{% endraw %}
+
 </td>
 </tr>
 </table>

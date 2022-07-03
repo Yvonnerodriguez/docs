@@ -2,14 +2,14 @@
 title: 将数据迁移到企业
 intro: '生成迁移存档后，您可以将数据导入目标 {% data variables.product.prodname_ghe_server %} 实例。 在将变更永久应用到目标实例之前，您需要检查变更，查看有无潜在的冲突。'
 redirect_from:
-  - /enterprise/admin/guides/migrations/importing-migration-data-to-github-enterprise/
+  - /enterprise/admin/guides/migrations/importing-migration-data-to-github-enterprise
   - /enterprise/admin/migrations/applying-the-imported-data-on-github-enterprise-server
   - /enterprise/admin/migrations/reviewing-migration-data
   - /enterprise/admin/migrations/completing-the-import-on-github-enterprise-server
-  - /enterprise/admin/guides/migrations/applying-the-imported-data-on-github-enterprise/
-  - /enterprise/admin/guides/migrations/reviewing-the-imported-data/
-  - /enterprise/admin/guides/migrations/completing-the-import-on-github-enterprise/
-  - /enterprise/admin/guides/migrations/importing-migration-data-to-github-enterprise-server/
+  - /enterprise/admin/guides/migrations/applying-the-imported-data-on-github-enterprise
+  - /enterprise/admin/guides/migrations/reviewing-the-imported-data
+  - /enterprise/admin/guides/migrations/completing-the-import-on-github-enterprise
+  - /enterprise/admin/guides/migrations/importing-migration-data-to-github-enterprise-server
   - /enterprise/admin/user-management/migrating-data-to-your-enterprise
   - /admin/user-management/migrating-data-to-your-enterprise
 versions:
@@ -129,7 +129,7 @@ $ ghe-migrator audit -s failed_import,failed_map,failed_rename,failed_merge -g <
 
 ### 从 {% data variables.product.prodname_dotcom_the_website %} 上的组织解锁仓库
 
-要在 {% data variables.product.prodname_dotcom_the_website %} 组织中解锁仓库，您需要向<a href="/rest/reference/migrations#unlock-an-organization-repository" class="dotcom-only">迁移解锁端点</a>发送 `DELETE` 请求。 您需要：
+要在 {% data variables.product.prodname_dotcom_the_website %} 组织中解锁仓库，您需要向[迁移解锁端点](/free-pro-team@latest/rest/reference/migrations#unlock-an-organization-repository)发送 `DELETE` 请求。 您需要：
   * 身份验证的访问令牌
   * 迁移的唯一 `id`
   * 要解锁的仓库的名称

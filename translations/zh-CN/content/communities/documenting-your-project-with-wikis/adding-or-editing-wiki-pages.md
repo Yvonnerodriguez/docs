@@ -2,10 +2,10 @@
 title: 添加或编辑 wiki 页面
 intro: '您可以直接在 {% data variables.product.product_name %} 或者本地使用命令行添加和编辑 wiki 页面。'
 redirect_from:
-  - /articles/adding-wiki-pages-via-the-online-interface/
-  - /articles/editing-wiki-pages-via-the-online-interface/
-  - /articles/adding-and-editing-wik-pages-locally/
-  - /articles/adding-and-editing-wiki-pages-locally/
+  - /articles/adding-wiki-pages-via-the-online-interface
+  - /articles/editing-wiki-pages-via-the-online-interface
+  - /articles/adding-and-editing-wik-pages-locally
+  - /articles/adding-and-editing-wiki-pages-locally
   - /articles/adding-or-editing-wiki-pages
   - /github/building-a-strong-community/adding-or-editing-wiki-pages
 product: '{% data reusables.gated-features.wikis %}'
@@ -44,7 +44,7 @@ Wiki 是 Git 仓库的一部分，因此您可以在本地进行更改，然后�
 
 ### 克隆 wiki 到计算机
 
-每个 wiki 都提供一种将其内容克隆到计算机的简易方式。 您可以选择使用提供的 URL 将仓库克隆到计算机：
+每个 wiki 都提供一种将其内容克隆到计算机的简易方式。 在 {% data variables.product.product_name %} 上创建初始页面后，您可以使用提供的 URL 将存储库克隆到您的计算机：
 
 ```shell
 $ git clone https://github.com/<em>YOUR_USERNAME</em>/<em>YOUR_REPOSITORY</em>.wiki.git

@@ -24,23 +24,39 @@ Organization owners can control which users in your organization can create and 
 To use codespaces in your organization, you must do the following:
 
 - Ensure that users have [at least write access](/organizations/managing-access-to-your-organizations-repositories/repository-permission-levels-for-an-organization) to the repositories where they want to use a codespace. 
-- [Enable {% data variables.product.prodname_codespaces %} for users in your organization](#configuring-which-users-in-your-organization-can-use-codespaces). You can choose allow {% data variables.product.prodname_codespaces %} for selected users or only for specific users.
+- [Enable {% data variables.product.prodname_codespaces %} for users in your organization](#enable-codespaces-for-users-in-your-organization). You can choose to allow {% data variables.product.prodname_codespaces %} for selected users or only for specific users.
 - [Set a spending limit](/billing/managing-billing-for-github-codespaces/managing-spending-limits-for-codespaces)
-- Ensure that your organization does not have an IP address allow list enabled. For more information, see "[Managing allowed IP addresses for your organization](/organizations/keeping-your-organization-secure/managing-allowed-ip-addresses-for-your-organization)."
+- Ensure that your organization does not have an IP address allow list enabled. For more information, see "[Managing allowed IP addresses for your organization](/{% ifversion fpt %}enterprise-cloud@latest/{% endif %}organizations/keeping-your-organization-secure/managing-allowed-ip-addresses-for-your-organization#using-github-actions-with-an-ip-allow-list){% ifversion fpt %}" in the {% data variables.product.prodname_ghe_cloud %} documentation.{% else %}."{% endif %}
 
 By default, a codespace can only access the repository from which it was created. If you want codespaces in your organization to be able to access other organization repositories that the codespace creator can access, see "[Managing access and security for {% data variables.product.prodname_codespaces %}](/codespaces/managing-codespaces-for-your-organization/managing-access-and-security-for-your-organizations-codespaces)."
 
 ## Enable {% data variables.product.prodname_codespaces %} for users in your organization
 
+{% ifversion fpt %}
+{% note %}
+
+**Note:** If you are a verified educator or a teacher, you must enable {% data variables.product.prodname_codespaces %} from a {% data variables.product.prodname_classroom %} to use your {% data variables.product.prodname_codespaces %} Education benefit. For more information, see "[Using GitHub Codespaces with GitHub Classroom](/education/manage-coursework-with-github-classroom/integrate-github-classroom-with-an-ide/using-github-codespaces-with-github-classroom#about-the-codespaces-education-benefit-for-verified-teachers)."
+
+{% endnote %}
+{% endif %}
 {% data reusables.profile.access_org %}
 {% data reusables.profile.org_settings %}
 {% data reusables.organizations.click-codespaces %}
 1. Under "User permissions", select one of the following options:
 
-   * **Allow for all users** to allow all your organization members to use {% data variables.product.prodname_codespaces %}.
    * **Selected users** to select specific organization members to use {% data variables.product.prodname_codespaces %}.
+   * **Allow for all members** to allow all your organization members to use {% data variables.product.prodname_codespaces %}.
+   * **Allow for all members and outside collaborators** to allow all your organization members as well as outside collaborators to use {% data variables.product.prodname_codespaces %}.
 
-   ![Radio buttons for "User permissions"](/assets/images/help/codespaces/organization-user-permission-settings.png)
+   ![Radio buttons for "User permissions"](/assets/images/help/codespaces/org-user-permission-settings-outside-collaborators.png)
+
+   {% note %}
+
+   **Note:** When you select **Allow for all members and outside collaborators**,  all outside collaborators who have been added to specific repositories can create and use {% data variables.product.prodname_codespaces %}. Your organization will be billed for all usage incurred by outside collaborators. For more information on managing outside collaborators, see "[About outside collaborators](/organizations/managing-access-to-your-organizations-repositories/adding-outside-collaborators-to-repositories-in-your-organization#about-outside-collaborators)."
+
+   {% endnote %}
+
+1. Click **Save**.
 
 ## Disabling {% data variables.product.prodname_codespaces %} for your organization
 

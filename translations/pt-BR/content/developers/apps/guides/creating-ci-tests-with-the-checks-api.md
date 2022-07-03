@@ -150,14 +150,14 @@ def create_check_run
     # The payload structure differs depending on whether a check run or a check suite event occurred.
     @payload['check_run'].nil? ? @payload['check_suite']['head_sha'] : @payload['check_run']['head_sha'],
     # [Hash] 'Accept' header option, to avoid a warning about the API not being ready for production use.
-    accept: 'application/vnd.github.v3+json'
+    accept: 'application/vnd.github+json'
   )
 end
 ```
 
 Este código chama o ponto de extremidade "[Crie uma verificação de execução](/rest/reference/checks#create-a-check-run)" usando o [create_check_run method](https://rdoc.info/gems/octokit/Octokit%2FClient%2FChecks:create_check_run).
 
-Para criar uma execução de verificação, são necessários apenas dois parâmetros de entrada: `nome` e `head_sha`. Vamos usar o [Rubocop](https://rubocop.readthedocs.io/en/latest/) para implementar o teste CI mais adiante início rápido. Por esse motivo, o nome "Octo Rubocop" é usado aqui, mas você pode escolher qualquer nome que desejar para a execução da verificação.
+Para criar uma execução de verificação, são necessários apenas dois parâmetros de entrada: `nome` e `head_sha`. Vamos usar [RuboCop](https://rubocop.readthedocs.io/en/latest/) para implementar o teste de CI mais adiante neste início rápido. É por isso que o nome "Octo RuboCop" é usado aqui, mas você pode escolher qualquer nome que quiser para a verificação ser executada.
 
 Você só está fornecendo os parâmetros necessários agora para que a funcionalidade básica funcione, mas você irá atualizar a verificação de execução posteriormente enquanto coleta mais informações sobre a verificação de execução. Por padrão, o GitHub define o `status` como `enfileirado`.
 
@@ -221,7 +221,7 @@ def initiate_check_run
     @payload['repository']['full_name'],
     @payload['check_run']['id'],
     status: 'in_progress',
-    accept: 'application/vnd.github.v3+json'
+    accept: 'application/vnd.github+json'
   )
 
   # ***** RUN A CI TEST *****
@@ -232,7 +232,7 @@ def initiate_check_run
     @payload['check_run']['id'],
     status: 'completed',
     conclusion: 'success',
-    accept: 'application/vnd.github.v3+json'
+    accept: 'application/vnd.github+json'
   )
 end
 ```
@@ -547,7 +547,7 @@ Agora você tem todas as informações de que precisa para atualizar sua execuç
   @payload['check_run']['id'],
   status: 'completed',
   conclusion: 'success',
-  accept: 'application/vnd.github.v3+json'
+  accept: 'application/vnd.github+json'
 )
 ```
 
@@ -571,7 +571,7 @@ Você deverá atualizar esse código para usar a variável de `conclusão` defin
     description: 'Automatically fix all linter notices.',
     identifier: 'fix_rubocop_notices'
   }],
-  accept: 'application/vnd.github.v3+json'
+  accept: 'application/vnd.github+json'
 )
 ```
 
